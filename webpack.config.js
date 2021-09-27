@@ -11,9 +11,6 @@ module.exports = {
         filename: "js/[name].js",
     },
     plugins: [new MiniCssExtractPlugin({ filename: "css/[name].css" })],
-    devServer: {
-        contentBase: path.resolve(__dirname, "src"),
-    },
     module: {
         rules: [
             {
