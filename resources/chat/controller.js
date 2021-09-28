@@ -5,11 +5,14 @@ const { requestValidation } = require("../requestValidation");
 
 async function get(req, res) {
     const validCons = ["item_iid", "sender", "recver"];
-    const validation = [
-        Object.keys(req.query).filter((param) => !validCons.includes(param))
-            .length <= 0,
-    ];
-    requestValidation(validation, res);
+    const validation = requestValidation(
+        [
+            Object.keys(req.query).filter((param) => !validCons.includes(param))
+                .length <= 0,
+        ],
+        res
+    );
+    if (!validation) return;
     res.json(await service.findChat(req.query));
 }
 async function post(req, res) {

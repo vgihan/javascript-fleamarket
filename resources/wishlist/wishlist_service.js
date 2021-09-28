@@ -4,17 +4,20 @@ module.exports = class ChatService {
     constructor(models) {
         this.models = models;
     }
-    async registChat(params) {
-        return await this.models.CHAT.create({
+    async registWishlist(params) {
+        return await this.models.WISHLIST.create({
+            USER_UID: params.user_uid,
             ITEM_IID: params.item_iid,
-            SENDER: params.sender,
-            RECVER: params.recver,
-            CONTENTS: params.contents,
         });
     }
-    async findChat(params) {
-        return await this.models.CHAT.findAll({
+    async findWishlist(params) {
+        return await this.models.WISHLIST.findAll({
             where: params,
+            include: [
+                {
+                    model: this.models.ITEM,
+                },
+            ],
         });
     }
 };

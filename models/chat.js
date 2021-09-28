@@ -8,30 +8,6 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 allowNull: false,
             },
-            ITEM_IID: {
-                type: DataTypes.STRING(36),
-                allowNull: false,
-                references: {
-                    model: "ITEM",
-                    key: "IID",
-                },
-            },
-            SENDER: {
-                type: DataTypes.STRING(20),
-                allowNull: false,
-                references: {
-                    model: "USER",
-                    key: "UID",
-                },
-            },
-            RECVER: {
-                type: DataTypes.STRING(20),
-                allowNull: false,
-                references: {
-                    model: "USER",
-                    key: "UID",
-                },
-            },
             CONTENTS: {
                 type: DataTypes.STRING(100),
                 allowNull: false,
