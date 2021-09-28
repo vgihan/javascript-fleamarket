@@ -22,5 +22,19 @@ async function post(req, res) {
     if (!validation) return;
     res.json(await service.registWishlist(req.body));
 }
+async function del(req, res) {
+    const validCons = ["user_uid", "item_iid"];
+    const validation = requestValidation(
+        [
+            Object.keys(req.query).filter((param) => !validCons.includes(param))
+                .length <= 0,
+            req.query.user_uid,
+            req.query.item_iid,
+        ],
+        res
+    );
+    if (!validation) return;
+    res.json(await service.deleteWishlist(req.query));
+}
 
-module.exports = { get, post };
+module.exports = { get, post, del };

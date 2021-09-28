@@ -20,4 +20,9 @@ module.exports = class ChatService {
             ],
         });
     }
+    async deleteWishlist(params) {
+        return await this.models.WISHLIST.destroy({
+            where: params,
+        });
+    }
 };
