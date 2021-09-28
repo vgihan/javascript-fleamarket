@@ -62,6 +62,17 @@ async function put(req, res) {
     if (!validation) return;
     res.json(await service.updateItem(req.body));
 }
-async function del(req, res) {}
+async function del(req, res) {
+    const validation = requestValidation(
+        [
+            Object.keys(req.query).filter((param) => param !== "iid").length <=
+                0,
+            req.query.iid,
+        ],
+        res
+    );
+    if (!validation) return;
+    res.json(await service.deleteItem(req.query));
+}
 
 module.exports = { get, post, put, del };
