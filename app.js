@@ -40,10 +40,10 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, "./assets")));
 
-app.use("/", pageRouter);
 app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
 app.use("/user", userRouter);
+app.use("/", pageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

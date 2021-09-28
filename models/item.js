@@ -1,4 +1,3 @@
-const models = require("../models");
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         "ITEM",
