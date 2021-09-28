@@ -41,5 +41,27 @@ async function post(req, res) {
     if (!validation) return;
     res.json(await service.registItem(req.body));
 }
+async function put(req, res) {
+    const validCons = [
+        "iid",
+        "user_uid",
+        "title",
+        "price",
+        "contents",
+        "category",
+        "state",
+    ];
+    const validation = requestValidation(
+        [
+            Object.keys(req.body).filter((param) => !validCons.includes(param))
+                .length <= 0,
+            req.body.iid,
+        ],
+        res
+    );
+    if (!validation) return;
+    res.json(await service.updateItem(req.body));
+}
+async function del(req, res) {}
 
-module.exports = { get, post };
+module.exports = { get, post, put, del };

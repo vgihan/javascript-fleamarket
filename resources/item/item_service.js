@@ -12,7 +12,6 @@ module.exports = class ItemService {
             TITLE: params.title,
             PRICE: params.price,
             CONTENTS: params.contents,
-            LOCATE: params.locate,
             CATEGORY: params.category,
         });
     }
@@ -20,5 +19,20 @@ module.exports = class ItemService {
         return await this.models.ITEM.findAll({
             where: params,
         });
+    }
+    async updateItem(params) {
+        const iid = params.iid;
+        delete params["iid"];
+        return await this.models.ITEM.update(
+            {
+                USER_UID: params.user_uid,
+                TITLE: params.title,
+                PRICE: params.price,
+                CONTENTS: params.contents,
+                CATEGORY: params.category,
+                STATE: params.state,
+            },
+            { where: { IID: iid } }
+        );
     }
 };
