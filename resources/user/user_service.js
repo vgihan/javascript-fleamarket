@@ -5,7 +5,7 @@ module.exports = class UserService {
     async registUser(params) {
         return await this.models.USER.create({
             UID: params.uid,
-            USERNAME: params.username,
+            LOCATE: params.locate,
         });
     }
 };

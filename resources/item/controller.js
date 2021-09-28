@@ -10,7 +10,6 @@ async function get(req, res) {
         "title",
         "price",
         "contents",
-        "locate",
         "category",
         "state",
     ];
@@ -25,29 +24,22 @@ async function get(req, res) {
     res.json(await service.findItem(req.query));
 }
 async function post(req, res) {
-    const { user_uid, title, price, contents, locate, category } = req.body;
+    const validCons = ["user_uid", "title", "price", "contents", "category"];
+    const { user_uid, title, price, contents, category } = req.body;
     const validation = requestValidation(
         [
+            Object.keys(req.body).filter((param) => !validCons.includes(param))
+                .length <= 0,
             user_uid.length < 20,
             title.length < 25,
             price < Number.MAX_VALUE,
             contents.length < 50,
-            locate.length < 15,
             category.length < 8,
         ],
         res
     );
     if (!validation) return;
-    res.json(
-        await service.registItem({
-            user_uid,
-            title,
-            price,
-            contents,
-            locate,
-            category,
-        })
-    );
+    res.json(await service.registItem(req.body));
 }
 
 module.exports = { get, post };

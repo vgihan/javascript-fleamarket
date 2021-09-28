@@ -4,7 +4,7 @@
 
 ## ERD
 
-![fleamarket_ERD](https://user-images.githubusercontent.com/49841765/135073397-2ff6fc2f-8ce9-4bcf-b1ce-ef17a2105b23.png)
+![fleamarket_ERD](https://user-images.githubusercontent.com/49841765/135079251-47d103c2-b077-40f1-8072-a6999629ad04.png)
 
 ## API 명세
 
