@@ -1,9 +1,10 @@
 const Service = require("./item_service");
 const models = require("../../models");
 const service = new Service(models);
+const { requestValidation } = require("../requestValidation");
 
 async function get(req, res) {
-    const vaildCons = [
+    const validCons = [
         "iid",
         "user_uid",
         "title",
@@ -15,7 +16,7 @@ async function get(req, res) {
     ];
     const validation = requestValidation(
         [
-            Object.keys(req.query).filter((param) => !vaildCons.includes(param))
+            Object.keys(req.query).filter((param) => !validCons.includes(param))
                 .length <= 0,
         ],
         res
@@ -47,15 +48,6 @@ async function post(req, res) {
             category,
         })
     );
-}
-function requestValidation(conditions, res) {
-    return conditions.reduce((pre, condition) => {
-        if (!condition) {
-            res.status(400).json({ message: "Bad Request" });
-            pre = false;
-        }
-        return pre;
-    }, true);
 }
 
 module.exports = { get, post };

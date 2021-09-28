@@ -1,8 +1,17 @@
 const Service = require("./chat_service");
 const models = require("../../models");
 const service = new Service(models);
+const { requestValidation } = require("../requestValidation");
 
-function get(req, res) {}
+async function get(req, res) {
+    const validCons = ["item_iid", "sender", "recver"];
+    const validation = [
+        Object.keys(req.query).filter((param) => !validCons.includes(param))
+            .length <= 0,
+    ];
+    requestValidation(validation, res);
+    res.json(await service.findChat(req.query));
+}
 async function post(req, res) {
     const { item_iid, sender, recver, contents } = req.body;
     res.json(await service.registChat({ item_iid, sender, recver, contents }));
