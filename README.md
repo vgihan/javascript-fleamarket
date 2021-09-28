@@ -11,7 +11,9 @@
 | PATH      | METHOD | Description                                                                                              |
 | --------- | ------ | -------------------------------------------------------------------------------------------------------- |
 | /item     | GET    | query string으로 조건을 보내 조건에 알맞은 중고 물건을 얻는다. 이때, 물건에 해당하는 사진도 함께 얻는다. |
-| /item     | POST   | title, price, contents, locate, category 를 필수 요청 파라미터로 하여 중고 물건을 등록한다.              |
+| /item     | POST   | user_uid, title, price, contents, category 를 필수 요청 파라미터로 하여 중고 물건을 등록한다.            |
+| /item     | PUT    | user_uid, title, price, contents, category를 전체 수정                                                   |
+| /item     | DELETE | iid로 식별하여 삭제                                                                                      |
 | /chat     | GET    | ITEM_IID, SENDER, RECVER 3가지를 요청 파라미터로 하여 채팅 기록을 얻음                                   |
 | /chat     | POST   | 채팅 시 ITEM_IID, SENDER, RECVER, contents를 body로 전달하여 등록한다.                                   |
 | /user     | POST   | 회원가입 시 USERNAME을 등록한다.                                                                         |
