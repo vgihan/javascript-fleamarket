@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 primaryKey: true,
             },
-            USERNAME: {
-                type: DataTypes.STRING(45),
+            LOCATE: {
+                type: DataTypes.STRING(30),
                 allowNull: false,
             },
         },
