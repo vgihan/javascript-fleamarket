@@ -1,4 +1,4 @@
-const Service = require("./service");
+const Service = require("./item_service");
 const models = require("../../models");
 const service = new Service(models);
 
