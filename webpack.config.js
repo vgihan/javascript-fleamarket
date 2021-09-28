@@ -6,6 +6,9 @@ module.exports = {
         main: "./public/js/index.js",
         reset: "./public/css/reset.scss",
     },
+    resolve: {
+        extension: [".ts", ".js"],
+    },
     output: {
         path: path.resolve(__dirname, "assets"),
         filename: "js/[name].js",
