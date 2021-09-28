@@ -35,4 +35,7 @@ module.exports = class ItemService {
             { where: { IID: iid } }
         );
     }
+    async deleteItem(params) {
+        return await this.models.ITEM.destroy({ where: params });
+    }
 };
