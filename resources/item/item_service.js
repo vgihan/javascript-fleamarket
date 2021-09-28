@@ -16,4 +16,16 @@ module.exports = class ItemService {
             CATEGORY: params.category,
         });
     }
+    async findItem(params) {
+        const conditions = this.setCondition(vaildCons, params);
+        return await this.models.ITEM.findAll({
+            where: conditions,
+        });
+    }
+    setCondition(vaildCons, params) {
+        return vaildCons.reduce((pre, con) => {
+            if (params[con]) pre[con] = params[con];
+            return pre;
+        }, {});
+    }
 };
