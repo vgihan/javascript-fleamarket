@@ -18,6 +18,7 @@ const pageRouter = require("./resources/page/index");
 const itemRouter = require("./resources/item/index");
 const chatRouter = require("./resources/chat/index");
 const userRouter = require("./resources/user/index");
+const wishRouter = require("./resources/wishlist/index");
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, "./assets")));
 app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
 app.use("/user", userRouter);
+app.use("/wishlist", wishRouter);
 app.use("/", pageRouter);
 
 // catch 404 and forward to error handler

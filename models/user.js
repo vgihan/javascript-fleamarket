@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define(
+    const user = sequelize.define(
         "USER",
         {
             UID: {
@@ -17,4 +17,23 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
         }
     );
+    user.associate = function (models) {
+        user.hasMany(models.CHAT, {
+            foreignKey: "SENDER",
+            onDelete: "cascade",
+        });
+        user.hasMany(models.CHAT, {
+            foreignKey: "RECVER",
+            onDelete: "cascade",
+        });
+        user.hasMany(models.ITEM, {
+            foreignKey: "USER_UID",
+            onDelete: "cascade",
+        });
+        user.hasMany(models.WISHLIST, {
+            foreignKey: "USER_UID",
+            onDelete: "cascade",
+        });
+    };
+    return user;
 };

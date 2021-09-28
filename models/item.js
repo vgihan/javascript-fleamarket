@@ -1,19 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define(
+    const item = sequelize.define(
         "ITEM",
         {
             IID: {
                 type: DataTypes.STRING(36),
                 allowNull: false,
                 primaryKey: true,
-            },
-            USER_UID: {
-                type: DataTypes.STRING(20),
-                allowNull: false,
-                references: {
-                    model: "USER",
-                    key: "UID",
-                },
             },
             TITLE: {
                 type: DataTypes.STRING(45),
@@ -62,4 +54,15 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: true,
         }
     );
+    item.associate = function (models) {
+        item.hasMany(models.PHOTO, {
+            foreignKey: "ITEM_IID",
+            onDelete: "cascade",
+        });
+        item.hasMany(models.CHAT, {
+            foreignKey: "ITEM_IID",
+            onDelete: "cascade",
+        });
+    };
+    return item;
 };
