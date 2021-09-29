@@ -1,19 +1,13 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        main: "./public/js/index.js",
-        reset: "./public/css/reset.scss",
-    },
-    resolve: {
-        extension: [".ts", ".js"],
+        main: "./frontend/public/js/index.js",
     },
     output: {
-        path: path.resolve(__dirname, "assets"),
-        filename: "js/[name].js",
+        path: path.resolve(__dirname, "frontend/assets"),
+        filename: "js/index.js",
     },
-    plugins: [new MiniCssExtractPlugin({ filename: "css/[name].css" })],
     module: {
         rules: [
             {
@@ -24,17 +18,14 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
-                test: /\.(svg|gif|otf)$/,
-                use: ["file-loader"],
-            },
-            {
-                test: /\.(png|jpg)$/,
-                loader: "url-loader",
+                test: /\.(svg|gif|png|otf)$/,
+                loader: "file-loader",
                 options: {
-                    name: "images/[name].txt",
+                    publicPath: "./asset/",
+                    name: "img/[name].[ext]?[hash]",
                 },
             },
         ],

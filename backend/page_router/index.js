@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
-    res.json({});
+router.get("", (req, res) => {
+    res.render("index.html");
 });
 
 module.exports = router;

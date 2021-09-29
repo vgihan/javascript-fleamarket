@@ -4,7 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
-const models = require("./models/index");
+const models = require("./backend/models/index");
 models.sequelize
     .sync()
     .then(() => {
@@ -14,16 +14,16 @@ models.sequelize
         console.log(err);
     });
 
-const pageRouter = require("./resources/page/index");
-const itemRouter = require("./resources/item/index");
-const chatRouter = require("./resources/chat/index");
-const userRouter = require("./resources/user/index");
-const wishRouter = require("./resources/wishlist/index");
+const pageRouter = require("./backend/page_router/index");
+const itemRouter = require("./backend/resources/item/index");
+const chatRouter = require("./backend/resources/chat/index");
+const userRouter = require("./backend/resources/user/index");
+const wishRouter = require("./backend/resources/wishlist/index");
 
 const app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "./views"));
+app.set("views", path.join(__dirname, "./frontend/views"));
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
@@ -39,7 +39,7 @@ app.use(
         sourceMap: true,
     })
 );
-app.use(express.static(path.join(__dirname, "./assets")));
+app.use(express.static(path.join(__dirname, "./frontend/assets")));
 
 app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
