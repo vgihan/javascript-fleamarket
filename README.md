@@ -20,3 +20,7 @@
 | /wishlist | GET    | user 정보를 이용하여 해당 유저의 위시리스트를 얻는다.                                                    |
 | /wishlist | POST   | 하트를 누르면 해당 유저의 위시리스트를 추가한다.                                                         |
 | /wishlist | DELETE | 하트를 다시 누르면 해당 위시리스트를 삭제한다.                                                           |
+
+## View Components
+
+![image](https://user-images.githubusercontent.com/49841765/135263185-c0482db7-3412-4a2b-8b3c-bbc6e4a7cd77.png)
