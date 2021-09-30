@@ -1,9 +1,9 @@
 let curSubscriber = null;
+const subscribers = new Set();
 
 export const registState = (obj) => {
     Object.keys(obj).forEach((key) => {
         let _value = obj[key];
-        const subscribers = new Set();
         Object.defineProperty(obj, key, {
             get() {
                 if (curSubscriber) subscribers.add(curSubscriber);

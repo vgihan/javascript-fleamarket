@@ -23,6 +23,31 @@ export class Main extends Component {
     setEvent() {
         document
             .querySelector(".main_write_btn")
-            .addEventListener("click", () => {});
+            .addEventListener("click", () => {
+                mainStore.setState({
+                    items: [
+                        {
+                            id: "ididid",
+                            img: "img",
+                            title: "파랑 선풍기",
+                            locate: "역삼동",
+                            time: "2시간 전",
+                            price: "24,500원",
+                            heart: "",
+                            comments: 3,
+                        },
+                        {
+                            id: "ididid",
+                            img: "img",
+                            title: "파랑 선풍기",
+                            locate: "역삼동",
+                            time: "2시간 전",
+                            price: "24,500원",
+                            heart: "",
+                            comments: 3,
+                        },
+                    ],
+                });
+            });
     }
 }
