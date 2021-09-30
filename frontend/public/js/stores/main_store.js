@@ -1,5 +1,7 @@
-export const store = {
-    state: {
+import { registState } from "../core/channel";
+
+export const mainStore = {
+    state: registState({
         locate: "전체",
         items: [
             {
@@ -12,17 +14,11 @@ export const store = {
                 heart: "",
                 comments: 3,
             },
-            {
-                id: "ididid",
-                img: "img",
-                title: "빈티지 밀크 글래스",
-                locate: "역삼동",
-                time: "2시간 전",
-                price: "158,000원",
-                heart: "wish",
-                comments: 0,
-            },
         ],
+    }),
+    setState(newState) {
+        Object.keys(newState).forEach((key) => {
+            if (this.state[key]) this.state[key] = newState[key];
+        });
     },
-    setState: {},
 };

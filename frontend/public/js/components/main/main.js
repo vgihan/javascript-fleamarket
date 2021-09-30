@@ -1,7 +1,7 @@
 import { Component } from "../../core/component";
 import { MainHeader } from "./main_header";
 import { MainContents } from "./main_contents";
-import { store } from "../../stores/main_store";
+import { mainStore } from "../../stores/main_store";
 
 export class Main extends Component {
     template() {
@@ -15,8 +15,8 @@ export class Main extends Component {
         const $header = document.querySelector(".main_header");
         const $contents = document.querySelector(".main_contents");
 
-        new MainHeader($header);
-        new MainContents($contents, store.state.items);
+        new MainHeader($header, mainStore.state.locate);
+        new MainContents($contents, mainStore.state.items);
     }
     setEvent() {
         document
