@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const models = require("./backend/models/index");
+const history = require("connect-history-api-fallback");
 models.sequelize
     .sync()
     .then(() => {
@@ -36,6 +37,11 @@ app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
 app.use("/user", userRouter);
 app.use("/wishlist", wishRouter);
+app.use(
+    history({
+        index: "/",
+    })
+);
 app.use("/", pageRouter);
 
 // catch 404 and forward to error handler
