@@ -8,7 +8,9 @@ export class Main extends Component {
         return `<div class="main">
             <div class="main_header"></div>
             <div class="main_contents"></div>
-            <div class="main_write_btn"></div>
+            <div class="main_write_btn">
+                <p>+</p>
+            </div>
         </div>`;
     }
     mounted() {
