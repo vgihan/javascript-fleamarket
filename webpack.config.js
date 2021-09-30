@@ -6,7 +6,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "frontend/assets"),
-        filename: "js/app.js",
+        filename: "js/index.js",
     },
     module: {
         rules: [
@@ -18,13 +18,22 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.(svg|gif|png|otf)$/,
                 loader: "file-loader",
                 options: {
-                    publicPath: "./asset/",
+                    publicPath: "./assets/",
                     name: "img/[name].[ext]?[hash]",
                 },
             },

@@ -15,7 +15,7 @@ export class Main extends Component {
         const $contents = document.querySelector(".main_contents");
 
         new MainHeader($header);
-        new MainContents($contents);
+        //new MainContents($contents);
     }
     setEvent() {
         document

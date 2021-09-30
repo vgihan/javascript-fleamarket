@@ -1,0 +1,51 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+.main > .main_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 25px;
+    background-color: #045d8b;
+    color: white;
+
+    font-size: 5px;
+    font-weight: normal;
+
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.main > .main_header > .header_element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main > .main_header > .header_element > img {
+    width: 10px;
+    height: 10px;
+}
+.main > .main_header > .main_category_btn {
+    cursor: pointer;
+}
+.main > .main_header > .main_locate_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 100px;
+    margin-right: 100px;
+    cursor: pointer;
+}
+.main > .main_header > .main_locate_btn > img {
+    margin-right: 5px;
+}
+.main > .main_header > .main_login_btn {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.main > .main_header > .main_menu_btn {
+    cursor: pointer;
+}

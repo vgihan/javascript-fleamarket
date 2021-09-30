@@ -3,8 +3,6 @@ export class Component {
         this.$parent = $parent;
         this.props = props;
         this.render();
-        this.setEvent();
-        this.mounted();
     }
     mounted() {}
     render() {
