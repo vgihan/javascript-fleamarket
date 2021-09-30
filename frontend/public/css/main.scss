@@ -49,3 +49,26 @@
 .main > .main_header > .main_menu_btn {
     cursor: pointer;
 }
+.main_contents > .main_contents_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main_contents > .main_contents_wrap > .main_content_element {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100px;
+}
+.main_content_element > .content_info_box {
+    display: flex;
+    flex-direction: row;
+}
+.content_info_box > .icon_info {
+    display: flex;
+    flex-direction: column;
+}
+.content_info_box > .word_info > .title {
+    font-size: 10%;
+}
