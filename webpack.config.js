@@ -2,11 +2,11 @@ const path = require("path");
 
 module.exports = {
     entry: {
-        main: "./frontend/public/js/index.js",
+        main: "./frontend/public/js/components/app.js",
     },
     output: {
         path: path.resolve(__dirname, "frontend/assets"),
-        filename: "js/index.js",
+        filename: "js/app.js",
     },
     module: {
         rules: [
