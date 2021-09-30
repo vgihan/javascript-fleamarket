@@ -4,9 +4,13 @@ const service = new Service(models);
 const { requestValidation } = require("../requestValidation");
 
 async function get(req, res) {
-    const validation = requestValidation([req.query.user_uid], res);
-    if (!validation) return;
-    res.json(await service.findWishlist(req.query));
+    try {
+        const validation = requestValidation([req.query.user_uid], res);
+        if (!validation) return;
+        res.json(await service.findWishlist(req.query));
+    } catch (err) {
+        res.status(400).json({ message: 400 });
+    }
 }
 async function post(req, res) {
     try {
