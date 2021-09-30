@@ -72,3 +72,24 @@
 .content_info_box > .word_info > .title {
     font-size: 10%;
 }
+.main > .main_write_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    right: 10%;
+    bottom: 10%;
+
+    border-radius: 100px;
+    width: 15px;
+    height: 15px;
+    background-color: #045d8b;
+    color: white;
+
+    cursor: pointer;
+}
+.main > .main_write_btn > p {
+    width: 8px;
+    height: 18px;
+}
