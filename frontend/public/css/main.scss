@@ -8,24 +8,25 @@
     justify-content: center;
     align-items: center;
 
-    height: 25px;
+    height: 100px;
     background-color: #045d8b;
     color: white;
 
-    font-size: 5px;
-    font-weight: normal;
+    font-family: "Noto Sans KR";
+    font-size: 30px;
+    font-weight: bold;
 
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 .main > .main_header > .header_element {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.main > .main_header > .header_element > img {
-    width: 10px;
-    height: 10px;
+.main > .main_header > .header_element img {
+    width: 40px;
+    height: 40px;
 }
 .main > .main_header > .main_category_btn {
     cursor: pointer;
@@ -35,8 +36,8 @@
     justify-content: center;
     align-items: center;
 
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 600px;
+    margin-right: 600px;
     cursor: pointer;
 }
 .main > .main_header > .main_locate_btn > img {
@@ -58,8 +59,25 @@
 .main_contents > .main_contents_wrap > .main_content_element {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+
     position: relative;
-    width: 100px;
+    width: 500px;
+
+    padding: 30px 0px 30px 0px;
+}
+.main_contents > .main_contents_wrap > .main_content_element:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.main_contents > .main_contents_wrap > .main_content_element:not(:last-child) {
+    border-bottom: #777 solid 1px;
+}
+.main_content_element > .content_img_box {
+    background-color: #ccc;
+    border: #777 solid 1px;
+    width: 160px;
+    border-radius: 10px;
 }
 .main_content_element > .content_info_box {
     display: flex;
@@ -68,9 +86,38 @@
 .content_info_box > .icon_info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+.content_info_box > .icon_info > img {
+    cursor: pointer;
+}
+.content_info_box > .icon_info > .comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content_info_box > .icon_info > .comment > img {
+    margin-right: 5px;
+}
+.content_info_box > .word_info {
+    width: 200px;
+
+    padding-bottom: 50px;
+    margin: 0px 10px 0px 40px;
+    line-height: 30px;
 }
 .content_info_box > .word_info > .title {
-    font-size: 10%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.content_info_box > .word_info > .locate_time {
+    font-size: 15px;
+    color: #aaa;
+    font-weight: bold;
+}
+.content_info_box > .word_info > .price {
+    font-size: 17px;
+    font-weight: bold;
 }
 .main > .main_write_btn {
     display: flex;
@@ -82,14 +129,15 @@
     bottom: 10%;
 
     border-radius: 100px;
-    width: 15px;
-    height: 15px;
+    width: 100px;
+    height: 100px;
     background-color: #045d8b;
     color: white;
+
+    font-size: 100px;
 
     cursor: pointer;
 }
 .main > .main_write_btn > p {
-    width: 8px;
-    height: 18px;
+    margin: 0px 10px 10px 10px;
 }
