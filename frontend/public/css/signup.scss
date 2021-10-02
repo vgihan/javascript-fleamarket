@@ -1,0 +1,38 @@
+.signup_contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.signup_contents > form {
+    display: flex;
+    flex-direction: column;
+}
+.signup_contents > form > label {
+    font-size: 20px;
+    font-weight: bold;
+}
+.signup_contents > form > input[type="text"] {
+    width: 475px;
+    height: 65px;
+    border-radius: 17px;
+    border: #999 solid 1px;
+    padding-left: 20px;
+    margin: 15px 0px 30px 0px;
+    font-size: 20px;
+}
+.signup_contents > form > input[type="text"]:focus {
+    outline: none;
+}
+.signup_contents > form > input[type="submit"] {
+    height: 80px;
+    background-color: #045d8b;
+    border-radius: 17px;
+    border: none;
+    color: white;
+
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+
+    cursor: pointer;
+}
