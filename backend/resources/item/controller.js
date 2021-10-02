@@ -30,6 +30,7 @@ async function post(req, res) {
             "title",
             "price",
             "contents",
+            "locate",
             "category",
         ];
         const { user_uid, title, price, contents, category } = req.body;

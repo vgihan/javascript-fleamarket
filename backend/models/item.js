@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(100),
                 allowNull: false,
             },
+            LOCATE: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
             CATEGORY: {
                 type: DataTypes.STRING(15),
                 allowNull: false,

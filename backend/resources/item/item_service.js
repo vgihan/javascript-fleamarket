@@ -12,6 +12,7 @@ module.exports = class ItemService {
             TITLE: params.title,
             PRICE: params.price,
             CONTENTS: params.contents,
+            LOCATE: params.locate,
             CATEGORY: params.category,
         });
     }
