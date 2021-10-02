@@ -6,6 +6,7 @@ import "../../img/menu_btn.png";
 import "../../img/chat_icon.png";
 import "../../img/heart.png";
 import "../../img/wish_heart.png";
+import "../../img/left_empty_arrow.png";
 
 import { initRouter } from "../router/router";
 
