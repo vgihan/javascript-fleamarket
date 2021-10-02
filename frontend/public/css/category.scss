@@ -1,22 +1,3 @@
-.category_header {
-    display: flex;
-    align-items: center;
-    background-color: #eee;
-    border-bottom: #aaa solid 1px;
-    height: 100px;
-}
-.category_header > img {
-    position: relative;
-    left: 10%;
-    width: 30px;
-    height: 40px;
-}
-.category_header > p {
-    position: relative;
-    left: 44%;
-    font-size: 30px;
-    font-weight: bold;
-}
 .category_contents {
     display: flex;
     justify-content: center;

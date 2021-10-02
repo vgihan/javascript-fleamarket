@@ -22,3 +22,22 @@
     border-radius: 100%;
     border-top: #999 solid 1px;
 }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    border-bottom: #aaa solid 1px;
+    height: 100px;
+}
+.header > img {
+    position: relative;
+    right: 40%;
+    width: 30px;
+    height: 40px;
+}
+.header > p {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+}
