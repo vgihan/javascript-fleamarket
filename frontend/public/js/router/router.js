@@ -1,7 +1,9 @@
-const { Main } = require("../components/main/main");
+import { Category } from "../components/category/category";
+import { Main } from "../components/main/main";
 
 const routeMap = {
     "/": Main,
+    "/category": Category,
 };
 
 export function initRouter() {
