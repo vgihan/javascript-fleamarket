@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         {
+            charset: "utf8",
             freezeTableName: true,
             timestamps: true,
         }

@@ -14,7 +14,7 @@ export class Login extends Component {
                 </form>
             </div>
             <div class="signup_box">
-                <a href="/signup">회원가입</a>
+                <a href="/signup-page">회원가입</a>
             </div>
         </div>`;
     }
