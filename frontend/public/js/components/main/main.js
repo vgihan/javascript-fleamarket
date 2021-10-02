@@ -9,7 +9,7 @@ export class Main extends Component {
             <div class="main_header"></div>
             <div class="main_contents"></div>
             <div class="main_write_btn">
-                <p>+</p>
+                <a href="/new-post">+</a>
             </div>
         </div>`;
     }

@@ -19,7 +19,7 @@ export class Category extends Component {
             "기타",
         ];
         return `<div class="category_wrap">
-            <div class="category_header">
+            <div class="header">
                 <img src="assets/img/left_empty_arrow.png"/>
                 <p>카테고리</p>
             </div>
