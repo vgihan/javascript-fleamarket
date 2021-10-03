@@ -5,6 +5,17 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const models = require("./backend/models/index");
 const history = require("connect-history-api-fallback");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
+
+const pageRouter = require("./backend/page_router/index");
+const authRouter = require("./backend/resources/auth/index");
+const itemRouter = require("./backend/resources/item/index");
+const chatRouter = require("./backend/resources/chat/index");
+const wishRouter = require("./backend/resources/wishlist/index");
+
+const app = express();
+
 models.sequelize
     .sync()
     .then(() => {
@@ -13,14 +24,6 @@ models.sequelize
     .catch((err) => {
         console.log(err);
     });
-
-const pageRouter = require("./backend/page_router/index");
-const itemRouter = require("./backend/resources/item/index");
-const chatRouter = require("./backend/resources/chat/index");
-const userRouter = require("./backend/resources/user/index");
-const wishRouter = require("./backend/resources/wishlist/index");
-
-const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "./frontend/views"));
@@ -32,10 +35,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "./frontend")));
+app.use(
+    session({
+        secret: "vgihan",
+        resave: false,
+        saveUninitialized: true,
+        store: new FileStore({
+            path: "./backend/sessions",
+        }),
+    })
+);
 
+app.use("/auth", authRouter);
 app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
-app.use("/user", userRouter);
 app.use("/wishlist", wishRouter);
 app.use(
     history({
