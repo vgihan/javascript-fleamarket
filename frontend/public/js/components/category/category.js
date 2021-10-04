@@ -20,7 +20,9 @@ export class Category extends Component {
         ];
         return `<div class="category_wrap">
             <div class="header">
-                <img src="assets/img/left_empty_arrow.png"/>
+                <a href="javascript:history.back()" class="back_btn">
+                    <img src="assets/img/left_empty_arrow.png" />
+                </a>
                 <p>카테고리</p>
             </div>
             <div class="category_contents">

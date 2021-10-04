@@ -8,7 +8,9 @@ export class Signup extends Component {
         };
         return `<div class="signup_wrap">
             <div class="header">
-                <img src="assets/img/left_empty_arrow.png" />
+                <a href="javascript:history.back()" class="back_btn">
+                    <img src="assets/img/left_empty_arrow.png" />
+                </a>
                 <p>회원가입</p>
             </div>
             <div class="signup_contents">

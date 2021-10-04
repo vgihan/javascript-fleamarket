@@ -4,7 +4,9 @@ export class Login extends Component {
     template() {
         return `<div class="login_wrap">
             <div class="header">
-                <img src="assets/img/left_empty_arrow.png" />
+                <a href="javascript:history.back()" class="back_btn">
+                    <img src="assets/img/left_empty_arrow.png" />
+                </a>
                 <p>로그인</p>
             </div>
             <div class="login_box">
