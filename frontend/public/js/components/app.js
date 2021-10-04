@@ -11,5 +11,13 @@ import "../../img/img_icon.png";
 import "../../img/locate_icon.png";
 
 import { initRouter } from "../router/router";
+import { store } from "../store/store";
+import { checkLoginAsync } from "../action/user";
 
+initStore();
 initRouter();
+
+function initStore() {
+    const { dispatch } = store;
+    checkLoginAsync()(dispatch);
+}

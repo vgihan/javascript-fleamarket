@@ -1,5 +1,3 @@
-import { subscribe } from "./channel";
-
 export class Component {
     state;
     props;
@@ -8,11 +6,8 @@ export class Component {
         this.$parent = $parent;
         this.props = props;
         this.state = this.initState();
-        subscribe(() => {
-            this.render();
-            this.setEvent();
-            this.mounted();
-        });
+        this.render();
+        this.setEvent();
         this.asyncUpdate();
     }
     initState() {
@@ -24,13 +19,13 @@ export class Component {
             this.state[key] = newState[key];
         });
         this.render();
-        this.setEvent();
-        this.mounted();
     }
     asyncUpdate() {}
     mounted() {}
     render() {
         this.$parent.innerHTML = this.template();
+        this.setEvent();
+        this.mounted();
     }
     setEvent() {}
     template() {}

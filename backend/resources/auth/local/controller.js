@@ -15,6 +15,18 @@ async function login(req, res) {
         res.status(400).json({ message: 400 });
     }
 }
+async function checkLogin(req, res) {
+    try {
+        const userId = req.session.user_id;
+        if (userId) {
+            res.redirect(`/user?user_id=${userId}&is_logined=true`);
+        } else {
+            res.json({ isLogined: false });
+        }
+    } catch (error) {
+        res.status(400).json({ message: 400 });
+    }
+}
 async function signup(req, res) {
     try {
         await service.registUser(req.body);
@@ -34,4 +46,4 @@ async function logout(req, res) {
     }
 }
 
-module.exports = { login, signup, logout };
+module.exports = { login, checkLogin, signup, logout };
