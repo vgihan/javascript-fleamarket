@@ -1,4 +1,5 @@
 import { Component } from "../../core/component";
+import { route } from "../../router/router";
 
 export class MainHeader extends Component {
     template() {
@@ -21,5 +22,13 @@ export class MainHeader extends Component {
             <img src='assets/img/menu_btn.png'>
           </a>
         </div>`;
+    }
+    setEvent() {
+        const categoryBtn = document.querySelector(".main_category_btn > a");
+
+        categoryBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            route("/category");
+        });
     }
 }

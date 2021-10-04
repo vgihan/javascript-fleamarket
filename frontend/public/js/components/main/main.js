@@ -1,7 +1,7 @@
 import { Component } from "../../core/component";
 import { MainHeader } from "./main_header";
 import { MainContents } from "./main_contents";
-import { mainStore } from "../../stores/main_store";
+import { route } from "../../router/router";
 
 export class Main extends Component {
     template() {
@@ -20,5 +20,12 @@ export class Main extends Component {
         new MainHeader($header, { locate: "전체" });
         new MainContents($contents, {});
     }
-    setEvent() {}
+    setEvent() {
+        const writeBtn = document.querySelector(".main_write_btn > a");
+
+        writeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            route("/new-post");
+        });
+    }
 }
