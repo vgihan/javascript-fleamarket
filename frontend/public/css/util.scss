@@ -30,9 +30,11 @@
     border-bottom: #aaa solid 1px;
     height: 100px;
 }
-.header > img {
+.header > a {
     position: relative;
     right: 40%;
+}
+.header > a > img {
     width: 30px;
     height: 40px;
 }

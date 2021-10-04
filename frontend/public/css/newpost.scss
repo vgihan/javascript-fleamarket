@@ -1,0 +1,80 @@
+.header {
+    background-color: white;
+}
+.newpost_contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newpost_contents > div {
+    width: 600px;
+    padding: 60px 0px 60px 0px;
+}
+.newpost_contents > div > input {
+    width: 300px;
+    border: none;
+    font-size: 30px;
+}
+.newpost_contents > div > textarea {
+    border: none;
+    width: 600px;
+    resize: none;
+    font-size: 30px;
+    font-family: "Noto Sans KR";
+    font-weight: bold;
+}
+.newpost_contents > div > input:focus,
+.newpost_contents > div > textarea:focus {
+    outline: none;
+}
+.newpost_contents > div:not(:last-child):not(:nth-last-child(2)) {
+    border-bottom: #999 solid 1px;
+}
+.newpost_contents > .contents_add_img > .add_img_box > label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: #999 solid 1px;
+    background-color: #dfdfdf;
+    cursor: pointer;
+}
+.newpost_contents > .contents_add_img > .add_img_box > input {
+    display: none;
+}
+.newpost_contents > .contents_add_locate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    bottom: 0px;
+    border-top: black solid 1px;
+    padding: 0px 0px 0px 0px;
+}
+.newpost_contents > .contents_add_locate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    bottom: 0px;
+    border-top: black solid 1px;
+    padding: 0px 0px 0px 0px;
+}
+.newpost_contents > .contents_add_locate > img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.newpost_contents > .contents_add_locate > input {
+    font-size: 25px;
+}
