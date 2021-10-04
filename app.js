@@ -9,6 +9,7 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 
 const pageRouter = require("./backend/page_router/index");
+const userRouter = require("./backend/resources/user/index");
 const authRouter = require("./backend/resources/auth/index");
 const itemRouter = require("./backend/resources/item/index");
 const chatRouter = require("./backend/resources/chat/index");
@@ -47,6 +48,7 @@ app.use(
 );
 
 app.use("/auth", authRouter);
+app.use("/user", userRouter);
 app.use("/item", itemRouter);
 app.use("/chat", chatRouter);
 app.use("/wishlist", wishRouter);

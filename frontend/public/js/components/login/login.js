@@ -1,6 +1,5 @@
 import { Component } from "../../core/component";
 import { route } from "../../router/router";
-import { createStore } from "../../store/store";
 
 export class Login extends Component {
     template() {
@@ -26,7 +25,9 @@ export class Login extends Component {
         );
         const signupBtn = document.querySelector(".signup_box > a");
 
-        submitBtn.addEventListener("click");
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+        });
         signupBtn.addEventListener("click", (e) => {
             e.preventDefault();
             route("/category");

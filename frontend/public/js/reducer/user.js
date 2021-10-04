@@ -1,34 +1,27 @@
 import {
-    LOGIN,
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
+    GET_LOGIN_PENDING,
+    GET_LOGIN_SUCCESS,
+    GET_LOGIN_FAILURE,
 } from "../action/user.js";
-
-const defaultState = {
-    isLoggedIn: false,
-    fetchingUpdate: false,
-    user: {},
-};
 
 export const userReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case LOGIN_REQUEST:
+        case GET_LOGIN_PENDING:
             return {
                 ...state,
-                fetchingUpdate: true,
             };
-        case LOGIN_SUCCESS:
+        case GET_LOGIN_SUCCESS:
+            console.log(action);
             return {
                 ...state,
-                fetchingUpdate: false,
-                isLoggedIn: true,
-                user: action.result,
+                isLogined: action.payload.isLogined,
+                user: action.payload.users ? action.payload.users[0] : null,
             };
-        case LOGIN_FAILURE:
+        case GET_LOGIN_FAILURE:
             return {
                 ...state,
-                fetchingUpdate: false,
             };
+        default:
+            return { ...state };
     }
 };

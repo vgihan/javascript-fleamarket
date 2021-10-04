@@ -1,10 +1,7 @@
-export function createStore(reducer, initialState) {
-    let state = initialState;
-    const dispatch = (action) => {
-        state = reducer(state, action);
-    };
-    const getState = () => ({ ...state });
-    return { getState, dispatch };
-}
+import { userReducer } from "../reducer/user";
+import { createStore } from "./createStore";
 
-export const store = createStore();
+export const store = createStore(userReducer, {
+    isLogined: false,
+    user: null,
+});

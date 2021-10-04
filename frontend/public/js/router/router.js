@@ -13,7 +13,6 @@ const routeMap = {
 };
 export function initRouter() {
     renderComponent();
-    console.log(new Date().getTime());
     window.addEventListener("popstate", renderComponent);
 }
 export function route(path) {
