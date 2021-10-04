@@ -11,13 +11,16 @@ const routeMap = {
     "/signup-page": Signup,
     "/new-post": NewPost,
 };
-
 export function initRouter() {
-    routing();
-    window.addEventListener("popstate", routing);
+    renderComponent();
+    console.log(new Date().getTime());
+    window.addEventListener("popstate", renderComponent);
 }
-
-function routing() {
+export function route(path) {
+    window.history.pushState({}, null, path);
+    renderComponent();
+}
+function renderComponent() {
     const path = window.location.pathname;
     const $root = document.querySelector(".root");
     new routeMap[path]($root, {});

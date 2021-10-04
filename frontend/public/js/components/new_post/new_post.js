@@ -2,7 +2,7 @@ import { Component } from "../../core/component";
 
 export class NewPost extends Component {
     template() {
-        return `<div class="header">
+        return `<div class="header white">
                 <a href="javascript:history.back()" class="back_btn">
                     <img src="assets/img/left_empty_arrow.png" />
                 </a>
