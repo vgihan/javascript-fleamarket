@@ -4,7 +4,7 @@ import { store } from "../../store/store";
 
 export class MainHeader extends Component {
     setup() {
-        store.subscribe(this.render.bind(this));
+        store.subscribe(this.render);
     }
     template() {
         const { user, isLogined } = store.getState();

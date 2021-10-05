@@ -2,6 +2,8 @@ export const GET_LOGIN_PENDING = "get_login_pending";
 export const GET_LOGIN_SUCCESS = "get_login_success";
 export const GET_LOGIN_FAILURE = "get_login_failure";
 
+export const NEW_POST_CHECK_CHANGE = "new_post_check_change";
+
 export const checkLoginAsync = () => {
     return async (dispatch) => {
         try {
@@ -23,5 +25,13 @@ export const checkLoginAsync = () => {
                 type: GET_LOGIN_FAILURE,
             });
         }
+    };
+};
+export const newPostAllCheck = (isAllCheck) => {
+    return {
+        type: NEW_POST_ALL_CHECK,
+        payload: {
+            isAllCheck: isAllCheck,
+        },
     };
 };
