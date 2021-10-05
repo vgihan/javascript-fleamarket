@@ -2,6 +2,7 @@ import { Component } from "../../core/component";
 import { MainHeader } from "./main_header";
 import { MainContents } from "./main_contents";
 import { routing } from "../../router/router";
+import { store } from "../../store/store";
 
 export class Main extends Component {
     template() {
@@ -25,6 +26,12 @@ export class Main extends Component {
 
         writeBtn.addEventListener("click", (e) => {
             e.preventDefault();
+            const state = store.getState();
+            if (!state.isLogined) {
+                alert("글 쓰기는 로그인이 필요합니다.");
+                routing("/login-page");
+                return;
+            }
             routing("/new-post");
         });
     }

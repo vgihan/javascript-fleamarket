@@ -18,7 +18,7 @@ export const checkLoginAsync = () => {
                 payload: data,
             });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             dispatch({
                 type: GET_LOGIN_FAILURE,
             });
