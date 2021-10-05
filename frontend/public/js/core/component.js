@@ -8,7 +8,6 @@ export class Component {
         this.state = this.initState();
         this.setup();
         this.render();
-        this.setEvent();
         this.asyncUpdate();
     }
     setup() {}
