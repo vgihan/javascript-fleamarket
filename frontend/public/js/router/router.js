@@ -3,7 +3,9 @@ import { Main } from "../components/main/main";
 import { Login } from "../components/login/login";
 import { Signup } from "../components/signup/signup";
 import { NewPost } from "../components/new_post/new_post";
+import { store } from "../store/store";
 
+const { initListener } = store;
 const routeMap = {
     "/": Main,
     "/category": Category,
@@ -17,6 +19,7 @@ export function initRouter() {
 }
 export function routing(path) {
     window.history.pushState({}, null, path);
+    initListener();
     renderComponent();
 }
 function renderComponent() {
