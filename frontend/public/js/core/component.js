@@ -14,6 +14,11 @@ export class Component {
     initState() {
         return {};
     }
+    render = () => {
+        this.$parent.innerHTML = this.template();
+        this.setEvent();
+        this.mounted();
+    };
     setState(newState) {
         Object.keys(newState).forEach((key) => {
             if (!this.state[key]) return;
@@ -23,11 +28,6 @@ export class Component {
     }
     asyncUpdate() {}
     mounted() {}
-    render() {
-        this.$parent.innerHTML = this.template();
-        this.setEvent();
-        this.mounted();
-    }
     setEvent() {}
     template() {}
 }

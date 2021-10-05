@@ -2,6 +2,7 @@ import {
     GET_LOGIN_PENDING,
     GET_LOGIN_SUCCESS,
     GET_LOGIN_FAILURE,
+    NEW_POST_CHECK_CHANGE,
 } from "../action/user.js";
 
 export const userReducer = (state = defaultState, action) => {
@@ -19,6 +20,11 @@ export const userReducer = (state = defaultState, action) => {
         case GET_LOGIN_FAILURE:
             return {
                 ...state,
+            };
+        case NEW_POST_CHECK_CHANGE:
+            return {
+                ...state,
+                isAllCheck: action.isAllCheck,
             };
         default:
             return { ...state };
