@@ -17,8 +17,7 @@ import { checkLoginAsync } from "../action/user";
 initStore();
 initRouter();
 
-function initStore() {
-    console.log(new Date().getTime());
+async function initStore() {
     const { dispatch } = store;
-    checkLoginAsync()(dispatch);
+    await checkLoginAsync()(dispatch);
 }

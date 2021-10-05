@@ -15,7 +15,7 @@ export function initRouter() {
     renderComponent();
     window.addEventListener("popstate", renderComponent);
 }
-export function route(path) {
+export function routing(path) {
     window.history.pushState({}, null, path);
     renderComponent();
 }

@@ -1,5 +1,5 @@
 import { Component } from "../../core/component";
-import { route } from "../../router/router";
+import { routing } from "../../router/router";
 import { store } from "../../store/store";
 
 export class MainHeader extends Component {
@@ -8,7 +8,6 @@ export class MainHeader extends Component {
     }
     template() {
         const { user, isLogined } = store.getState();
-        console.log(store.getState());
         return `<div class="main_category_btn header_element">
           <a href="/category">
             <img src='assets/img/main_category_btn.png'>
@@ -36,15 +35,15 @@ export class MainHeader extends Component {
 
         categoryBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            route("/category");
+            routing("/category");
         });
         loginBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            route(loginBtn.getAttribute("data-url"));
+            routing(loginBtn.getAttribute("data-url"));
         });
         menuBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            route("/menu");
+            routing("/menu");
         });
     }
 }

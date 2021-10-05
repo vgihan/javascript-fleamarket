@@ -42,7 +42,7 @@ export class MainContents extends Component {
         return { items: [] };
     }
     async asyncUpdate() {
-        const res = await fetch("/item", {
+        const res = await fetch(`/item`, {
             method: "get",
             headers: {
                 "Content-Type": "application/json",

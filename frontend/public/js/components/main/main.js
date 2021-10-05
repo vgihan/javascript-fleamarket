@@ -1,7 +1,7 @@
 import { Component } from "../../core/component";
 import { MainHeader } from "./main_header";
 import { MainContents } from "./main_contents";
-import { route } from "../../router/router";
+import { routing } from "../../router/router";
 
 export class Main extends Component {
     template() {
@@ -21,11 +21,11 @@ export class Main extends Component {
         new MainContents($contents, {});
     }
     setEvent() {
-        const writeBtn = document.querySelector(".main_write_btn > a");
+        const writeBtn = document.querySelector(".main_write_btn");
 
         writeBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            route("/new-post");
+            routing("/new-post");
         });
     }
 }

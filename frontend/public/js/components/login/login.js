@@ -1,13 +1,11 @@
-import { loginAsync } from "../../action/user";
 import { Component } from "../../core/component";
-import { route } from "../../router/router";
-import { store } from "../../store/store";
+import { routing } from "../../router/router";
 
 export class Login extends Component {
     template() {
         return `<div class="login_wrap">
             <div class="header">
-                <a href="javascript:history.back()" class="back_btn">
+                <a href="" onclick="window.history.back()" class="back_btn">
                     <img src="assets/img/left_empty_arrow.png" />
                 </a>
                 <p>로그인</p>
@@ -28,7 +26,7 @@ export class Login extends Component {
 
         signupBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            route("/category");
+            routing("/category");
         });
     }
 }
