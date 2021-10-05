@@ -5,7 +5,7 @@ module.exports = class ItemService {
     async getUser(params) {
         return await this.models.USER.findAll({
             where: {
-                UID: params.user_id,
+                UID: params.userId,
             },
         });
     }

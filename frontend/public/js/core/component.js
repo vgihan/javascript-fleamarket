@@ -6,10 +6,12 @@ export class Component {
         this.$parent = $parent;
         this.props = props;
         this.state = this.initState();
+        this.setup();
         this.render();
         this.setEvent();
         this.asyncUpdate();
     }
+    setup() {}
     initState() {
         return {};
     }

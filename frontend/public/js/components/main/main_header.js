@@ -3,6 +3,9 @@ import { route } from "../../router/router";
 import { store } from "../../store/store";
 
 export class MainHeader extends Component {
+    setup() {
+        store.subscribe(this.render.bind(this));
+    }
     template() {
         const { user, isLogined } = store.getState();
         console.log(store.getState());
@@ -13,7 +16,7 @@ export class MainHeader extends Component {
         </div>
         <div class="main_locate_btn header_element">
           <img src='assets/img/locate_btn.png'>
-          <p>${user ? user.locate : "전체"}</p>
+          <p>${user ? user.LOCATE : "전체"}</p>
         </div>
         <div class="main_login_btn header_element">
           <a href="" data-url="${isLogined ? "/mypage" : "/login-page"}">

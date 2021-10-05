@@ -4,12 +4,13 @@ const service = new Service(models);
 
 async function get(req, res) {
     try {
-        const users = await service.getUser({ user_id: req.query.user_id });
+        const users = await service.getUser({ userId: req.query.userId });
         res.json({
-            isLogined: req.query.is_logined ? true : false,
+            isLogined: req.query.isLogined ? true : false,
             users,
         });
     } catch (error) {
+        console.log(error);
         res.status(400).json({ message: "Bad Request" });
     }
 }
