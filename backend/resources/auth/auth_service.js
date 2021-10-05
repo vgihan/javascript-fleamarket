@@ -3,10 +3,10 @@ module.exports = class AuthService {
         this.models = models;
     }
     async checkLoginInfo(params) {
-        const { user_id } = params;
+        const { userId } = params;
         const user = await this.models.USER.findAll({
             where: {
-                UID: user_id,
+                UID: userId,
             },
         });
         return user.length <= 0 ? false : true;

@@ -18,6 +18,7 @@ initStore();
 initRouter();
 
 function initStore() {
+    console.log(new Date().getTime());
     const { dispatch } = store;
     checkLoginAsync()(dispatch);
 }

@@ -18,8 +18,8 @@ passport.use(
                         UID: username,
                     },
                 });
+                console.log(user);
                 if (user.length <= 0) throw new Error();
-                console.log(done(null, user));
                 return done(null, user);
             } catch (error) {
                 return done(error);

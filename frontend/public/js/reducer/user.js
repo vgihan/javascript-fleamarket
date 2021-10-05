@@ -11,11 +11,10 @@ export const userReducer = (state = defaultState, action) => {
                 ...state,
             };
         case GET_LOGIN_SUCCESS:
-            console.log(action);
             return {
                 ...state,
                 isLogined: action.payload.isLogined,
-                user: action.payload.users ? action.payload.users[0] : null,
+                user: action.payload.users[0],
             };
         case GET_LOGIN_FAILURE:
             return {

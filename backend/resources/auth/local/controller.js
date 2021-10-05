@@ -6,10 +6,10 @@ async function login(req, res) {
     try {
         const result = await service.checkLoginInfo(req.body);
         if (result) {
-            req.session.user_id = req.body.user_id;
+            req.session.userId = req.body.userId;
             res.redirect("/");
         } else {
-            res.redirect("/login-page");
+            res.status(401).redirect("/login-page");
         }
     } catch (error) {
         res.status(400).json({ message: 400 });
@@ -17,9 +17,11 @@ async function login(req, res) {
 }
 async function checkLogin(req, res) {
     try {
-        const userId = req.session.user_id;
+        const userId = req.session.userId;
         if (userId) {
-            res.redirect(`/user?user_id=${userId}&is_logined=true`);
+            res.redirect(
+                `http://localhost/user?userId=${userId}&isLogined=true`
+            );
         } else {
             res.json({ isLogined: false });
         }

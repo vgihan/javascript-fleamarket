@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { get } = require("./controller");
 
-router.get("/user", get);
+router.get("", get);
 
 module.exports = router;
