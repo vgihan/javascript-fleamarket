@@ -27,9 +27,9 @@ export const checkLoginAsync = () => {
         }
     };
 };
-export const newPostAllCheck = (isAllCheck) => {
+export const newPostCheckChange = (isAllCheck) => {
     return {
-        type: NEW_POST_ALL_CHECK,
+        type: NEW_POST_CHECK_CHANGE,
         payload: {
             isAllCheck: isAllCheck,
         },

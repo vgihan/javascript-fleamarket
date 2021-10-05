@@ -24,7 +24,7 @@ export const userReducer = (state = defaultState, action) => {
         case NEW_POST_CHECK_CHANGE:
             return {
                 ...state,
-                isAllCheck: action.isAllCheck,
+                isAllCheck: action.payload.isAllCheck,
             };
         default:
             return { ...state };

@@ -1,5 +1,6 @@
 import { Component } from "../../core/component";
 import { store } from "../../store/store";
+import { newPostCheckChange } from "../../action/user";
 
 export class NewPostContents extends Component {
     setup() {
@@ -27,7 +28,9 @@ export class NewPostContents extends Component {
                 </div>
                 <div class="contents_add_locate">
                     <img src="assets/img/locate_icon.png"/>
-                    <input type="text" name="locate" value="${user.LOCATE}" readonly />
+                    <input type="text" name="locate" value="${
+                        user ? user.LOCATE : ""
+                    }" readonly />
                 </div>`;
     }
     initState() {
@@ -52,7 +55,7 @@ export class NewPostContents extends Component {
                 return pre;
             }, true);
             if (!isAllInput) return;
-            this.setState({ isAllInput: true });
+            store.dispatch(newPostCheckChange(true));
         };
 
         $title.addEventListener("keyup", checkAllInput($inputs));
