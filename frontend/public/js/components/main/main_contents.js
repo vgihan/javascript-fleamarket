@@ -42,7 +42,8 @@ export class MainContents extends Component {
         return { items: [] };
     }
     async asyncUpdate() {
-        const res = await fetch(`/item`, {
+        const { locate } = store.getState();
+        const res = await fetch(`/item?locate=${locate}`, {
             method: "get",
             headers: {
                 "Content-Type": "application/json",

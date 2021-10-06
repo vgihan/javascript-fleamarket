@@ -5,14 +5,13 @@ export class Login extends Component {
     template() {
         return `<div class="login_wrap">
             <div class="header">
-                <a href="" onclick="window.history.back()" class="back_btn">
+                <a href="" class="back_btn">
                     <img src="assets/img/left_empty_arrow.png" />
                 </a>
                 <p>로그인</p>
             </div>
             <div class="login_box">
-                <form action="/auth/local/login" method="POST">
-                    <input type="text" name="userId" placeholder="아이디를 입력하세요." required/>
+                <form action="/auth/github" method="GET">
                     <input type="submit" value="로그인"/>
                 </form>
             </div>
@@ -23,10 +22,15 @@ export class Login extends Component {
     }
     setEvent() {
         const signupBtn = document.querySelector(".signup_box > a");
+        const backBtn = document.querySelector(".header > a");
 
+        backBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.history.back();
+        });
         signupBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            routing("/category");
+            routing("/signup-page");
         });
     }
 }
