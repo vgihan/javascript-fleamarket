@@ -8,7 +8,7 @@ export const checkLoginAsync = () => {
     return async (dispatch) => {
         try {
             dispatch({ type: GET_LOGIN_PENDING });
-            const res = await fetch("/auth/local/login", {
+            const res = await fetch("/auth/github/login", {
                 method: "get",
                 headers: {
                     "Content-Type": "application/json",

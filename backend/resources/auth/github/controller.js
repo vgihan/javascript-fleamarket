@@ -23,7 +23,6 @@ async function githubLoginCallback(req, res) {
     );
     const gitProfile = await authService.getGitProfile(accessToken);
     const user = await userService.getUser({ userId: gitProfile.login })[0];
-    console.log(user);
     const setSession = ({ ...arg }) =>
         Object.keys(arg).forEach(
             (property) => (req.session[property] = arg[property])
@@ -60,4 +59,12 @@ async function signup(req, res) {
         res.status(400).json();
     }
 }
-module.exports = { githubLogin, githubLoginCallback, signup };
+function checkLogin(req, res) {
+    try {
+        const { isLogined, user } = req.session;
+        res.json({ isLogined, user });
+    } catch (error) {
+        res.status(400).json();
+    }
+}
+module.exports = { githubLogin, githubLoginCallback, signup, checkLogin };

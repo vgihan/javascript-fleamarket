@@ -14,9 +14,7 @@ export class Signup extends Component {
                 <p>회원가입</p>
             </div>
             <div class="signup_contents">
-                <form action="/auth/local/signup" method="POST">
-                    <label for="user_id">아이디</label>
-                    <input type="text" name="user_id" id="user_id" placeholder="영문, 숫자 조합 20자 이하" />
+                <form action="/auth/github/signup" method="POST">
                     <label for="locate">우리 동네</label>
                     <input type="text" name="locate" id="locate" placeholder="시∙구 제외, 동만 입력" />
                     <input type="submit" value="회원가입" ${
@@ -27,7 +25,7 @@ export class Signup extends Component {
         </div>`;
     }
     initState() {
-        return { submitState: false };
+        return { submitState: true };
     }
     setEvent() {}
 }
