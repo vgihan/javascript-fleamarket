@@ -3,6 +3,7 @@ import {
     GET_LOGIN_SUCCESS,
     GET_LOGIN_FAILURE,
     NEW_POST_CHECK_CHANGE,
+    SET_CATEGORY,
 } from "../action/user.js";
 
 export const userReducer = (state = defaultState, action) => {
@@ -25,6 +26,11 @@ export const userReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 isAllCheck: action.payload.isAllCheck,
+            };
+        case SET_CATEGORY:
+            return {
+                ...state,
+                category: action.payload.category,
             };
         default:
             return { ...state };

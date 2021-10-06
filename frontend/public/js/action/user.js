@@ -4,6 +4,8 @@ export const GET_LOGIN_FAILURE = "get_login_failure";
 
 export const NEW_POST_CHECK_CHANGE = "new_post_check_change";
 
+export const SET_CATEGORY = "set_category";
+
 export const checkLoginAsync = async (dispatch) => {
     try {
         dispatch(getLoginPending());
@@ -37,6 +39,14 @@ export const newPostCheckChange = (isAllCheck) => {
         type: NEW_POST_CHECK_CHANGE,
         payload: {
             isAllCheck: isAllCheck,
+        },
+    };
+};
+export const setCategory = (category) => {
+    return {
+        type: SET_CATEGORY,
+        payload: {
+            category: category,
         },
     };
 };

@@ -1,5 +1,6 @@
 import { Component } from "../../core/component";
 import { store } from "../../store/store";
+import { makeQuery } from "../../utils/make_query";
 
 export class MainContents extends Component {
     template() {
@@ -43,8 +44,13 @@ export class MainContents extends Component {
         return { items: [] };
     }
     async asyncUpdate() {
-        const { locate } = store.getState().user;
-        const res = await fetch(`/item?locate=${locate}`, {
+        const {
+            user: { locate },
+            category,
+        } = store.getState();
+        const queryString = makeQuery({ locate, category });
+        console.log(queryString);
+        const res = await fetch(`/item?${queryString}`, {
             method: "get",
             headers: {
                 "Content-Type": "application/json",
