@@ -4,11 +4,13 @@ const {
     githubLoginCallback,
     signup,
     checkLogin,
+    logout,
 } = require("./controller");
 
 router.get("", githubLogin);
 router.get("/callback", githubLoginCallback);
-router.post("/signup", signup);
 router.get("/login", checkLogin);
+router.get("/logout", logout);
+router.post("/signup", signup);
 
 module.exports = router;

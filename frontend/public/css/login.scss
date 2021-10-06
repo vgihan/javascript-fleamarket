@@ -1,9 +1,9 @@
-.login_box,
-.signup_box {
+.login_box {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 300px;
 }
 .login_box > form {
     display: flex;
@@ -24,15 +24,14 @@
 .login_box input[type="submit"] {
     width: 500px;
     height: 65px;
-    background-color: #045d8b;
+    background-color: black;
     border-radius: 17px;
     color: white;
     font-size: 20px;
     margin-bottom: 30px;
     border: none;
     cursor: pointer;
-}
-.signup_box > a {
-    color: black;
-    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
 }

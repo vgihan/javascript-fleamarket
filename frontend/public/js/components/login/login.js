@@ -12,11 +12,8 @@ export class Login extends Component {
             </div>
             <div class="login_box">
                 <form action="/auth/github" method="GET">
-                    <input type="submit" value="로그인"/>
+                    <input type="submit" value="Github 계정으로 로그인"/>
                 </form>
-            </div>
-            <div class="signup_box">
-                <a href="/signup-page">회원가입</a>
             </div>
         </div>`;
     }

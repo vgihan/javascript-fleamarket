@@ -72,4 +72,18 @@ function checkLogin(req, res) {
         res.status(400).json();
     }
 }
-module.exports = { githubLogin, githubLoginCallback, signup, checkLogin };
+function logout(req, res) {
+    try {
+        req.session.destroy();
+        res.redirect("/");
+    } catch (error) {
+        res.status(500).json();
+    }
+}
+module.exports = {
+    githubLogin,
+    githubLoginCallback,
+    signup,
+    checkLogin,
+    logout,
+};
