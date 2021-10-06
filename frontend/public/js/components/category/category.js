@@ -1,4 +1,7 @@
+import { setCategory } from "../../action/user";
 import { Component } from "../../core/component";
+import { routing } from "../../router/router";
+import { store } from "../../store/store";
 
 export class Category extends Component {
     template() {
@@ -39,5 +42,16 @@ export class Category extends Component {
                 </div>
             </div>
         </div>`;
+    }
+    setEvent() {
+        const $contents = this.$parent.querySelector(".contents_wrap");
+
+        $contents.addEventListener("click", (e) => {
+            const $element = e.target.closest(".content_box");
+            if (!$element) return;
+            const category = $element.querySelector("p").innerText;
+            store.dispatch(setCategory(category));
+            routing("/");
+        });
     }
 }
