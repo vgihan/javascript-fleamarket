@@ -44,12 +44,10 @@ export class MainContents extends Component {
         return { items: [] };
     }
     async asyncUpdate() {
-        const {
-            user: { locate },
-            category,
-        } = store.getState();
+        const globalState = store.getState();
+        const locate = globalState?.user?.locate;
+        const category = globalState.category;
         const queryString = makeQuery({ locate, category });
-        console.log(queryString);
         const res = await fetch(`/item?${queryString}`, {
             method: "get",
             headers: {
