@@ -9,4 +9,12 @@ module.exports = class ItemService {
             },
         });
     }
+    async postUser(params) {
+        const { uid, locate, accessToken } = params;
+        return await this.models.USER.create({
+            UID: uid,
+            LOCATE: locate,
+            ACCESS_TOKEN: accessToken,
+        });
+    }
 };

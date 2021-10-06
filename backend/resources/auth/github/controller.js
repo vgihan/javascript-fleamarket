@@ -37,4 +37,27 @@ async function githubLoginCallback(req, res) {
     if (user) res.redirect("/");
     else res.redirect("/signup-page");
 }
-module.exports = { githubLogin, githubLoginCallback };
+async function signup(req, res) {
+    try {
+        const { accessToken } = req.session;
+        const gitProfile = await authService.getGitProfile(accessToken);
+        await userService.postUser({
+            uid: gitProfile.login,
+            locate: req.body.locate,
+            accessToken,
+        });
+        const setSession = ({ ...arg }) =>
+            Object.keys(arg).forEach(
+                (property) => (req.session[property] = arg[property])
+            );
+        setSession({
+            accessToken,
+            isLogined: true,
+            user: { userId: gitProfile.login, locate: req.body.locate },
+        });
+        res.redirect("/");
+    } catch (error) {
+        res.status(400).json();
+    }
+}
+module.exports = { githubLogin, githubLoginCallback, signup };
