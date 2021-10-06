@@ -4,6 +4,7 @@ import { Login } from "../components/login/login";
 import { Signup } from "../components/signup/signup";
 import { NewPost } from "../components/new_post/new_post";
 import { store } from "../store/store";
+import { Mypage } from "../components/mypage/mypage";
 
 const { initListener } = store;
 const routeMap = {
@@ -12,6 +13,7 @@ const routeMap = {
     "/login-page": Login,
     "/signup-page": Signup,
     "/new-post": NewPost,
+    "/mypage": Mypage,
 };
 export function initRouter() {
     renderComponent();

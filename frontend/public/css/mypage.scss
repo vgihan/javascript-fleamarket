@@ -1,0 +1,25 @@
+.mypage_contents > form > input[type="submit"] {
+    width: 500px;
+    height: 65px;
+    background-color: #045d8b;
+    border-radius: 17px;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 30px;
+    border: none;
+    cursor: pointer;
+}
+.mypage_contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mypage_contents > .contents_username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 40px;
+    font-weight: bold;
+}
