@@ -15,7 +15,7 @@ export class MainHeader extends Component {
         </div>
         <div class="main_locate_btn header_element">
           <img src='assets/img/locate_btn.png'>
-          <p>${user ? user.LOCATE : "전체"}</p>
+          <p>${user ? user.locate : "전체"}</p>
         </div>
         <div class="main_login_btn header_element">
           <a href="" data-url="${isLogined ? "/mypage" : "/login-page"}">

@@ -15,7 +15,7 @@ export const userReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 isLogined: action.payload.isLogined,
-                user: action.payload.users ? action.payload.users[0] : null,
+                user: action.payload.user,
             };
         case GET_LOGIN_FAILURE:
             return {
