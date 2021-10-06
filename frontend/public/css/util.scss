@@ -25,21 +25,25 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: #eee;
     border-bottom: #aaa solid 1px;
     height: 100px;
 }
 .header > a {
-    position: relative;
-    right: 40%;
+    position: absolute;
+    left: 80%;
+}
+.header > a:first-child {
+    position: absolute;
+    left: 20%;
 }
 .header > a > img {
     width: 30px;
     height: 40px;
 }
 .header > p {
-    position: relative;
+    position: absolute;
+    left: 48%;
     font-size: 30px;
     font-weight: bold;
 }

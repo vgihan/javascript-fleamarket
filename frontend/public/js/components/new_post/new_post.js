@@ -4,7 +4,7 @@ import { NewPostHeader } from "./new_post_header";
 
 export class NewPost extends Component {
     template() {
-        return `<div class="header white"></div>
+        return `<div class="header white newpost"></div>
             <div class="newpost_contents"></div>`;
     }
     mounted() {

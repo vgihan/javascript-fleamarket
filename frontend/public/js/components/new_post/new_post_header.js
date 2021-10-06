@@ -2,9 +2,6 @@ import { Component } from "../../core/component";
 import { store } from "../../store/store";
 
 export class NewPostHeader extends Component {
-    setup() {
-        store.subscribe(this.render);
-    }
     template() {
         const { isAllCheck } = store.getState();
         return `<a href="javascript:history.back()" class="back_btn">
