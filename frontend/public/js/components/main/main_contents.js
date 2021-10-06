@@ -1,4 +1,5 @@
 import { Component } from "../../core/component";
+import { store } from "../../store/store";
 
 export class MainContents extends Component {
     template() {
@@ -42,7 +43,8 @@ export class MainContents extends Component {
         return { items: [] };
     }
     async asyncUpdate() {
-        const res = await fetch(`/item`, {
+        const { locate } = store.getState().user;
+        const res = await fetch(`/item?locate=${locate}`, {
             method: "get",
             headers: {
                 "Content-Type": "application/json",
