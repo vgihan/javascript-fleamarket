@@ -3,9 +3,7 @@ import { routing } from "../../router/router";
 import { store } from "../../store/store";
 
 export class MainHeader extends Component {
-    setup() {
-        store.subscribe(this.render);
-    }
+    setup() {}
     template() {
         const { user, isLogined } = store.getState();
         return `<div class="main_category_btn header_element">

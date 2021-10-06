@@ -6,6 +6,9 @@ export class MainContents extends Component {
     template() {
         return `<div class="main_contents_wrap">
             ${this.state.items.reduce((pre, content) => {
+                const time = parseInt(
+                    (new Date() - new Date(content.createdAt)) / 60000
+                );
                 pre += `<div class="main_content_element" data-id="${
                     content.IID
                 }">
@@ -15,11 +18,9 @@ export class MainContents extends Component {
                     <div class="content_info_box">
                         <div class="word_info">
                             <p class="title">${content.TITLE}</p>
-                            <p class="locate_time">${
-                                content.LOCATE
-                            } ∙ ${parseInt(
-                    (new Date() - new Date(content.createdAt)) / 60000
-                )} 분 전</p>
+                            <p class="locate_time">${content.LOCATE} ∙ ${
+                    time >= 60 ? parseInt(time / 60) : time
+                } ${time >= 60 ? "시간 전" : "분 전"}</p>
                             <p class="price">${content.PRICE.toLocaleString()} 원</p>
                         </div>
                         <div class="icon_info">
@@ -39,6 +40,20 @@ export class MainContents extends Component {
                 return pre;
             }, ``)}
         </div>`;
+    }
+    setEvent() {
+        const $contents = this.$parent.querySelector(".main_contents_wrap");
+
+        $contents.addEventListener("mouseover", (e) => {
+            const $wishIcon = e.target.closest(".icon_info > img");
+            if (!$wishIcon) return;
+            $wishIcon.src = "assets/img/wish_heart.png";
+        });
+        $contents.addEventListener("mouseout", (e) => {
+            const $wishIcon = e.target.closest(".icon_info > img");
+            if (!$wishIcon) return;
+            $wishIcon.src = "assets/img/heart.png";
+        });
     }
     initState() {
         return { items: [] };

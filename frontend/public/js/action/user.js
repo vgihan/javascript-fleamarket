@@ -38,7 +38,7 @@ export const newPostCheckChange = (isAllCheck) => {
     return {
         type: NEW_POST_CHECK_CHANGE,
         payload: {
-            isAllCheck: isAllCheck,
+            isAllCheck,
         },
     };
 };

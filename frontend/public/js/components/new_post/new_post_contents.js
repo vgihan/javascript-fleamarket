@@ -3,9 +3,6 @@ import { store } from "../../store/store";
 import { newPostCheckChange } from "../../action/user";
 
 export class NewPostContents extends Component {
-    setup() {
-        store.subscribe(this.render);
-    }
     template() {
         const { user } = store.getState();
         return `<div class="contents_add_img">
@@ -54,8 +51,8 @@ export class NewPostContents extends Component {
                 if (element.value.length === 0) pre = false;
                 return pre;
             }, true);
-            if (!isAllInput) return;
-            store.dispatch(newPostCheckChange(true));
+            if (!isAllInput) store.dispatch(newPostCheckChange(false));
+            else store.dispatch(newPostCheckChange(true));
         };
 
         $title.addEventListener("keyup", checkAllInput($inputs));

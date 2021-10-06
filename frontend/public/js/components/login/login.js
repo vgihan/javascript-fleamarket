@@ -18,16 +18,11 @@ export class Login extends Component {
         </div>`;
     }
     setEvent() {
-        const signupBtn = document.querySelector(".signup_box > a");
         const backBtn = document.querySelector(".header > a");
 
         backBtn.addEventListener("click", (e) => {
             e.preventDefault();
             window.history.back();
-        });
-        signupBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            routing("/signup-page");
         });
     }
 }

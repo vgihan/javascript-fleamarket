@@ -1,14 +1,21 @@
+import { observable } from "../core/observer";
+
 export function createStore(reducer, initialState) {
-    let state = initialState;
-    const listeners = [];
-    const initListener = () => (listeners.length = 0);
+    let state = observable(initialState);
+    const frozenState = {};
+    Object.keys(state).forEach((key) => {
+        Object.defineProperty(frozenState, key, {
+            get: () => state[key],
+        });
+    });
     const dispatch = (action) => {
-        state = reducer(state, action);
-        listeners.forEach((listener) => listener());
+        const newState = reducer(state, action);
+        Object.keys(newState).forEach((key) => {
+            if (state[key] === undefined) return;
+            if (state[key] === newState[key]) return;
+            state[key] = newState[key];
+        });
     };
-    const getState = () => ({ ...state });
-    const subscribe = (listener) => {
-        listeners.push(listener);
-    };
-    return { getState, dispatch, subscribe, initListener };
+    const getState = () => frozenState;
+    return { getState, dispatch };
 }

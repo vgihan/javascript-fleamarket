@@ -1,3 +1,5 @@
+import { observe } from "./observer";
+
 export class Component {
     state;
     props;
@@ -14,11 +16,13 @@ export class Component {
     initState() {
         return {};
     }
-    render = () => {
-        this.$parent.innerHTML = this.template();
-        this.setEvent();
-        this.mounted();
-    };
+    render() {
+        observe(() => {
+            this.$parent.innerHTML = this.template();
+            this.setEvent();
+            this.mounted();
+        });
+    }
     setState(newState) {
         Object.keys(newState).forEach((key) => {
             if (!this.state[key]) return;
