@@ -27,7 +27,7 @@ export class Signup extends Component {
         </div>`;
     }
     initState() {
-        return { submitState: true };
+        return { submitState: false };
     }
     setEvent() {}
 }

@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(30),
                 allowNull: false,
             },
+            ACCESS_TOKEN: {
+                type: DataTypes.STRING(45),
+                allowNull: false,
+            },
         },
         {
             charset: "utf8",
