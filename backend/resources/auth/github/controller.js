@@ -22,18 +22,23 @@ async function githubLoginCallback(req, res) {
         clientSecret
     );
     const gitProfile = await authService.getGitProfile(accessToken);
-    const user = await userService.getUser({ userId: gitProfile.login })[0];
+    const user = await userService.getUser({ userId: gitProfile.login });
     const setSession = ({ ...arg }) =>
         Object.keys(arg).forEach(
             (property) => (req.session[property] = arg[property])
         );
     const sessionInfo = {
         accessToken,
-        isLogined: user ? true : false,
-        user: user ? { userId: user.UID, locate: user.LOCATE } : null,
+        isLogined: user[0] ? true : false,
+        user: user[0]
+            ? {
+                  userId: user[0].dataValues.UID,
+                  locate: user[0].dataValues.LOCATE,
+              }
+            : null,
     };
     setSession(sessionInfo);
-    if (user) res.redirect("/");
+    if (user[0]) res.redirect("/");
     else res.redirect("/signup-page");
 }
 async function signup(req, res) {
