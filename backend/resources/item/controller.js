@@ -12,6 +12,7 @@ async function get(req, res) {
         "contents",
         "category",
         "state",
+        "locate",
     ];
     const validation = requestValidation(
         [
@@ -20,6 +21,7 @@ async function get(req, res) {
         ],
         res
     );
+    console.log(validation, req.query);
     if (!validation) return;
     res.json(await service.findItem(req.query));
 }

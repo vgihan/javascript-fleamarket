@@ -16,10 +16,9 @@ import { initRouter } from "../router/router";
 import { store } from "../store/store";
 import { checkLoginAsync } from "../action/user";
 
-initStore();
-initRouter();
+const componentInit = async () => {
+    await checkLoginAsync(store.dispatch);
+    initRouter();
+};
 
-function initStore() {
-    const { dispatch } = store;
-    checkLoginAsync()(dispatch);
-}
+componentInit();

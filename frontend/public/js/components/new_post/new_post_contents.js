@@ -29,7 +29,7 @@ export class NewPostContents extends Component {
                 <div class="contents_add_locate">
                     <img src="assets/img/locate_icon.png"/>
                     <input type="text" name="locate" value="${
-                        user ? user.LOCATE : ""
+                        user ? user.locate : ""
                     }" readonly />
                 </div>`;
     }
