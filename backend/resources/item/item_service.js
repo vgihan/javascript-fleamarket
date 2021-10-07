@@ -1,4 +1,6 @@
 const uuid = require("uuid");
+const db = require("../../models");
+const { sequelize } = require("../../models");
 
 module.exports = class ItemService {
     constructor(models) {
@@ -16,10 +18,18 @@ module.exports = class ItemService {
             CATEGORY: params.category,
         });
     }
-    async findItem(params) {
-        return await this.models.ITEM.findAll({
-            where: params,
-        });
+    async findItem(params, userId) {
+        const condition = Object.keys(params)
+            .reduce((pre, key) => {
+                pre.push(`${key}='${params[key]}'`);
+                return pre;
+            }, [])
+            .join(" AND ");
+        const subQuery = `SELECT * FROM ITEM
+        LEFT OUTER JOIN (SELECT * FROM WISHLIST WHERE USER_UID = '${userId}') AS user_wishlist 
+        ON ITEM.IID = user_wishlist.ITEM_IID
+        ${condition.length === 0 ? "" : "WHERE " + condition};`;
+        return await db.sequelize.query(subQuery);
     }
     async updateItem(params) {
         const iid = params.iid;

@@ -17,7 +17,6 @@ export const observable = (obj) => {
             },
             set(value) {
                 _value = value;
-                console.log(value, observers);
                 observers.forEach((fn) => fn());
             },
         });

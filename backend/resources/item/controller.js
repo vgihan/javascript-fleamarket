@@ -22,7 +22,15 @@ async function get(req, res) {
         res
     );
     if (!validation) return;
-    res.json(await service.findItem(req.query));
+    const { isLogined } = req.session;
+    res.json(
+        (
+            await service.findItem(
+                req.query,
+                isLogined ? req.session.user.userId : null
+            )
+        )[0]
+    );
 }
 async function post(req, res) {
     try {
