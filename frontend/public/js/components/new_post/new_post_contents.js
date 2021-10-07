@@ -1,19 +1,14 @@
 import { Component } from "../../core/component";
 import { store } from "../../store/store";
 import { newPostCheckChange } from "../../action/user";
+import { NewPostImg } from "./new_post_img";
 
 export class NewPostContents extends Component {
     template() {
         const { user } = store.getState();
-        return `<form action="/item" method="POST">
+        return `<form id="newpost" action="/item" method="POST">
             <div class="contents_add_img">
-                <div class="add_img_box">
-                    <label for="imgs">
-                        <img src='assets/img/img_icon.png'/>
-                        <p>0/10</p>
-                    </label>
-                    <input type="file" name="imgs" id="imgs" multiple />
-                </div>
+                
             </div>
             <div class="contents_add_title">
                 <input type="text" name="title" placeholder='글 제목'/>
@@ -31,6 +26,11 @@ export class NewPostContents extends Component {
                 }" readonly />
             </div>
         </form>`;
+    }
+    mounted() {
+        const $img = this.$parent.querySelector(".contents_add_img");
+
+        new NewPostImg($img, {});
     }
     initState() {
         return {

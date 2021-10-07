@@ -27,6 +27,37 @@ form > div > textarea:focus {
 form > div:not(:last-child):not(:nth-last-child(2)) {
     border-bottom: #999 solid 1px;
 }
+form > .contents_add_img {
+    display: flex;
+    flex-direction: row;
+}
+form > .contents_add_img > .img_container > img {
+    width: 80px;
+    height: 80px;
+    border: #999 solid 1px;
+    border-radius: 10px;
+    margin: 0px 7px 0px 7px;
+}
+form > .contents_add_img > .img_container > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 7px;
+
+    position: relative;
+    width: 15px;
+    height: 15px;
+    left: 44%;
+}
+form > .contents_add_img > .img_container > button:hover {
+    background-color: #888;
+}
 form > .contents_add_img > .add_img_box > label {
     display: flex;
     flex-direction: column;
