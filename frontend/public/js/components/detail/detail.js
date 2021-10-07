@@ -47,7 +47,7 @@ export class Detail extends Component {
             category,
             contents,
         });
-        new DetailFooter($footer, { like, price });
+        new DetailFooter($footer, { like, price, seller });
     }
     initState() {
         return {
