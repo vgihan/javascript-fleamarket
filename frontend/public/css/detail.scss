@@ -1,0 +1,63 @@
+.detail_wrap {
+    display: flex;
+    justify-content: center;
+}
+.detail_container {
+    width: 600px;
+}
+.detail_img_box {
+    background-color: #ddd;
+    height: 400px;
+}
+.detail_contents {
+    padding: 20px 20px 20px 20px;
+}
+.detail_contents > .title_box {
+    margin-bottom: 20px;
+}
+.detail_contents > .title_box > .title {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 25px 0px 20px 0px;
+}
+.detail_contents > .title_box > .category_time {
+    font-size: 15px;
+    color: #888;
+}
+.detail_contents > .contents_box {
+    height: 150px;
+}
+.detail_contents > .contents_box > p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.detail_contents > .num_box > p {
+    font-size: 15px;
+    color: #888;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.detail_contents > .user_info_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #f0f0f0;
+    padding: 0px 20px 0px 20px;
+}
+.detail_contents > .user_info_box > .intro {
+    font-weight: bold;
+}
+.detail_contents > .user_info_box > .user_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 150px;
+}
+.detail_contents > .user_info_box > .user_info > .user_id {
+    font-weight: bold;
+}
+.detail_contents > .user_info_box > .user_info > .locate {
+    color: #888;
+}

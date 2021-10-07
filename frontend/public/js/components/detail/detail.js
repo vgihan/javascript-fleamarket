@@ -8,36 +8,60 @@ import { DetailState } from "./detail_state";
 export class Detail extends Component {
     template() {
         return `<div class="detail_wrap">
-            <div class="detail_img_box"></div>
-            <div class="detail_state_box"></div>
-            <div class="detail_contents"></div>
-            <div class="detail_footer"></div>
+            <div class="detail_container">
+                <div class="detail_img_box"></div>
+                <div class="detail_state_box"></div>
+                <div class="detail_contents"></div>
+                <div class="detail_footer"></div>
+            </div>
         </div>`;
     }
     mounted() {
-        const { state, locate, imgs, num, seller, like, price, time } =
-            this.state;
+        const {
+            state,
+            locate,
+            imgs,
+            num,
+            seller,
+            category,
+            contents,
+            like,
+            price,
+            time,
+            title,
+        } = this.state;
 
         const $img = this.$parent.querySelector(".detail_img_box");
-        const $state = this.$parent.querySelector(".detail_img_box");
-        const $contents = this.$parent.querySelector(".detail_img_box");
-        const $footer = this.$parent.querySelector(".detail_img_box");
+        const $state = this.$parent.querySelector(".detail_state_box");
+        const $contents = this.$parent.querySelector(".detail_contents");
+        const $footer = this.$parent.querySelector(".detail_footer");
 
         new DetailImg($img, { imgs });
         new DetailState($state, { state });
-        new DetailContents($contents, { locate, num, seller, time });
+        new DetailContents($contents, {
+            locate,
+            num,
+            seller,
+            time,
+            title,
+            category,
+            contents,
+        });
         new DetailFooter($footer, { like, price });
     }
     initState() {
         return {
-            locate: null,
+            locate: "",
             imgs: [],
-            num: { chat: null, heart: null, view: null },
-            seller: null,
+            num: { chat: "", heart: "", view: "" },
+            seller: "",
             like: false,
-            price: null,
-            time: null,
+            price: "",
+            time: 0,
             state: null,
+            title: "",
+            category: "",
+            contents: "",
         };
     }
     async asyncUpdate() {
@@ -61,6 +85,9 @@ export class Detail extends Component {
             price: item.PRICE,
             time: (new Date() - new Date(item.createdAt)) / 60000,
             state: item.STATE,
+            title: item.TITLE,
+            category: item.CATEGORY,
+            contents: item.CONTENTS,
         });
     }
 }
