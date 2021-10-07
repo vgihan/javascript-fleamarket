@@ -1,4 +1,5 @@
 import { Component } from "../../core/component";
+import { routing } from "../../router/router";
 import { store } from "../../store/store";
 import { makeQuery } from "../../utils/make_query";
 
@@ -85,7 +86,20 @@ export class MainContents extends Component {
                 },
             });
         };
-        $contents.addEventListener("click", toggleLike);
+        $contents.addEventListener("click", (e) => {
+            const $likeBtn = e.target.closest(".icon_info > img");
+            const $content = e.target.closest(".main_content_element");
+            if ($likeBtn) {
+                toggleLike(e);
+                return;
+            }
+            if ($content) {
+                const query = makeQuery({
+                    item_id: $content.getAttribute("data-id"),
+                });
+                routing(`/detail?${query}`);
+            }
+        });
     }
     initState() {
         return { items: [] };
