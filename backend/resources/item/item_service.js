@@ -25,7 +25,7 @@ module.exports = class ItemService {
             }, [])
             .join(" AND ");
         const subQuery = `SELECT * FROM ITEM
-        LEFT OUTER JOIN (SELECT * FROM WISHLIST WHERE USER_UID = '${userId}') AS user_wishlist 
+        LEFT OUTER JOIN (SELECT WID, ITEM_IID, USER_UID AS LIKE_UID FROM WISHLIST WHERE USER_UID = '${userId}') AS user_wishlist 
         ON ITEM.IID = user_wishlist.ITEM_IID
         ${condition.length === 0 ? "" : "WHERE " + condition};`;
         return await db.sequelize.query(subQuery);

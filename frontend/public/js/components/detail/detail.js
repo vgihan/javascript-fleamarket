@@ -1,5 +1,4 @@
 import { Component } from "../../core/component";
-import { routing } from "../../router/router";
 import { makeQuery } from "../../utils/make_query";
 import { DetailContents } from "./detail_contents";
 import { DetailFooter } from "./detail_footer";
@@ -16,7 +15,8 @@ export class Detail extends Component {
         </div>`;
     }
     mounted() {
-        const { locate, imgs, num, seller, like, price, time } = this.state;
+        const { state, locate, imgs, num, seller, like, price, time } =
+            this.state;
 
         const $img = this.$parent.querySelector(".detail_img_box");
         const $state = this.$parent.querySelector(".detail_img_box");
@@ -40,5 +40,27 @@ export class Detail extends Component {
             state: null,
         };
     }
-    async asyncUpdate() {}
+    async asyncUpdate() {
+        const query = makeQuery({ iid: this.props.item_id });
+        const res = await fetch(`/item?${query}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const item = (await res.json())[0];
+        this.setState({
+            locate: item.LOCATE,
+            num: {
+                chat: item.CHAT_NUM,
+                heart: item.HEART_NUM,
+                view: item.LOOKUP_NUM,
+            },
+            seller: item.USER_UID,
+            like: Boolean(item.WID),
+            price: item.PRICE,
+            time: (new Date() - new Date(item.createdAt)) / 60000,
+            state: item.STATE,
+        });
+    }
 }
