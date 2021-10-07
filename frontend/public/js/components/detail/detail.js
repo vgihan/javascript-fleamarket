@@ -1,3 +1,4 @@
+import { lookupItem } from "../../asyncs/lookup";
 import { Component } from "../../core/component";
 import { makeQuery } from "../../utils/make_query";
 import { DetailContents } from "./detail_contents";
@@ -71,6 +72,7 @@ export class Detail extends Component {
         };
     }
     async asyncUpdate() {
+        await lookupItem(this.props.item_id);
         const query = makeQuery({ iid: this.props.item_id });
         const res = await fetch(`/item?${query}`, {
             method: "GET",
