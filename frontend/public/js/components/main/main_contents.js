@@ -24,7 +24,9 @@ export class MainContents extends Component {
                             <p class="price">${content.PRICE.toLocaleString()} 원</p>
                         </div>
                         <div class="icon_info">
-                            <img src="assets/img/heart.png"/>
+                            <img src="assets/img/${
+                                content.WID ? "wish_heart" : "heart"
+                            }.png" data-like="${content.WID ? 1 : 0}"/>
                             ${
                                 content.CHAT_NUM === 0
                                     ? ""
@@ -33,7 +35,6 @@ export class MainContents extends Component {
                                             <p class="num">${content.CHAT_NUM}</p>
                                         </div>`
                             }
-                            
                         </div>
                     </div>
                 </div>`;
@@ -44,16 +45,47 @@ export class MainContents extends Component {
     setEvent() {
         const $contents = this.$parent.querySelector(".main_contents_wrap");
 
-        $contents.addEventListener("mouseover", (e) => {
+        const toggleLike = async (e) => {
+            const { isLogined } = store.getState();
             const $wishIcon = e.target.closest(".icon_info > img");
-            if (!$wishIcon) return;
-            $wishIcon.src = "assets/img/wish_heart.png";
-        });
-        $contents.addEventListener("mouseout", (e) => {
-            const $wishIcon = e.target.closest(".icon_info > img");
-            if (!$wishIcon) return;
-            $wishIcon.src = "assets/img/heart.png";
-        });
+            const $content = e.target.closest(".main_content_element");
+            if (!$wishIcon || !isLogined) return;
+            const toggles = [
+                { src: "assets/img/wish_heart.png", request: postWishlist },
+                { src: "assets/img/heart.png", request: deleteWishlist },
+            ];
+            const isLike = $wishIcon.getAttribute("data-like");
+            const userId = store.getState().user.userId;
+            const itemId = $content.getAttribute("data-id");
+            $wishIcon.src = toggles[isLike].src;
+            $wishIcon.setAttribute("data-like", (parseInt(isLike) + 1) % 2);
+            await toggles[isLike].request(userId, itemId);
+        };
+        const postWishlist = async (userId, itemId) => {
+            return await fetch("/wishlist", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_uid: userId,
+                    item_iid: itemId,
+                }),
+            });
+        };
+        const deleteWishlist = async (userId, itemId) => {
+            const query = makeQuery({
+                user_uid: userId,
+                item_iid: itemId,
+            });
+            return await fetch(`/wishlist?${query}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        };
+        $contents.addEventListener("click", toggleLike);
     }
     initState() {
         return { items: [] };
