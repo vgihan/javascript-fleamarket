@@ -65,25 +65,43 @@ async function post(req, res) {
     }
 }
 async function put(req, res) {
-    const validCons = [
-        "iid",
-        "user_uid",
-        "title",
-        "price",
-        "contents",
-        "category",
-        "state",
-    ];
-    const validation = requestValidation(
-        [
-            Object.keys(req.body).filter((param) => !validCons.includes(param))
-                .length <= 0,
-            req.body.iid,
-        ],
-        res
-    );
-    if (!validation) return;
-    res.json(await service.updateItem(req.body));
+    try {
+        if (!req.body.mode) throw new Error("no mode");
+        const validCons = [
+            "iid",
+            "user_uid",
+            "title",
+            "price",
+            "contents",
+            "category",
+            "state",
+            "mode",
+            "num",
+        ];
+        const validation = requestValidation(
+            [
+                Object.keys(req.body).filter(
+                    (param) => !validCons.includes(param)
+                ).length <= 0,
+                req.body.iid,
+            ],
+            res
+        );
+        if (!validation) return;
+        if (req.body.mode === 3) {
+            res.json(await service.updateItem(req.body));
+            return;
+        }
+        const target = [
+            { condition: { HEART_NUM: req.body.num }, iid: req.body.iid },
+            { condition: { LOOKUP_NUM: req.body.num }, iid: req.body.iid },
+            { condition: { CHAT_NUM: req.body.num }, iid: req.body.iid },
+        ];
+        res.json(await service.updateItemNum(target[req.body.mode]));
+    } catch (error) {
+        console.log(error);
+        res.status(400).redirect("/");
+    }
 }
 async function del(req, res) {
     const validation = requestValidation(

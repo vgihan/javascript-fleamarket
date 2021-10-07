@@ -48,4 +48,9 @@ module.exports = class ItemService {
     async deleteItem(params) {
         return await this.models.ITEM.destroy({ where: params });
     }
+    async updateItemNum(params) {
+        await this.models.ITEM.increment(params.condition, {
+            where: { IID: params.iid },
+        });
+    }
 };
