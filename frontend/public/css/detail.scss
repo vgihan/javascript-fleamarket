@@ -61,3 +61,72 @@
 .detail_contents > .user_info_box > .user_info > .locate {
     color: #888;
 }
+.detail_container > .detail_footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: fixed;
+    width: 560px;
+    bottom: 0px;
+
+    border-top: #888 solid 1px;
+    padding: 20px 20px 20px 20px;
+}
+.detail_container > .detail_footer > .like_price_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.detail_container > .detail_footer > .like_price_box > .like_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    border-right: #888 solid 1px;
+}
+.detail_container > .detail_footer > .like_price_box > .like_box > img {
+    cursor: pointer;
+}
+.detail_container > .detail_footer > .like_price_box > .like_box > img:hover {
+    opacity: 50%;
+}
+.detail_container > .detail_footer > .like_price_box > .price_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    width: 100px;
+    height: 40px;
+
+    font-weight: bold;
+}
+.detail_container > .detail_footer > .like_price_box > .chat_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    height: 40px;
+
+    font-weight: bold;
+}
+.detail_container > .detail_footer > .chat_box > button {
+    height: 40px;
+    width: 200px;
+    background-color: #045d8b;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}
+.detail_container > .detail_footer > .chat_box > button:hover {
+    opacity: 50%;
+}

@@ -94,6 +94,9 @@
 .content_info_box > .icon_info > img {
     cursor: pointer;
 }
+.content_info_box > .icon_info > img:hover {
+    opacity: 50%;
+}
 .content_info_box > .icon_info > .comment {
     display: flex;
     flex-direction: row;
@@ -140,6 +143,9 @@
     font-size: 70px;
 
     cursor: pointer;
+}
+.main > .main_write_btn:hover {
+    opacity: 50%;
 }
 .main > .main_write_btn > a {
     margin: 0px 10px 10px 10px;
