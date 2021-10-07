@@ -7,7 +7,9 @@ export class DetailContents extends Component {
         return `<div class="title_box">
             <p class="title">${title}</p>
             <p class="category_time">${category} ∙ ${
-            time < 60 ? `${time}분 전` : `${parseInt(time / 60)}시간 전`
+            time < 60
+                ? `${parseInt(time)}분 전`
+                : `${parseInt(time / 60)}시간 전`
         }</p>
         </div>
         <div class="contents_box">
