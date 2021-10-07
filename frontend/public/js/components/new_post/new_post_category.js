@@ -9,7 +9,7 @@ export class NewPostCategory extends Component {
                     <input type="radio" name="category" id="cate_${
                         i + 1
                     }" value="${category}" ${
-                i === this.state.selected ? "checked='checked'" : ""
+                i + 1 === this.state.selected ? "checked='checked'" : ""
             }/>`;
             return pre;
         }, "")}`;
