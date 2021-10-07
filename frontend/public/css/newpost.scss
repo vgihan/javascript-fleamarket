@@ -70,21 +70,35 @@ form > .contents_add_img > .add_img_box > label {
     border: #999 solid 1px;
     background-color: #dfdfdf;
     cursor: pointer;
+    margin-right: 7px;
 }
 form > .contents_add_img > .add_img_box > input {
     display: none;
 }
-form > .contents_add_locate {
+form > .contents_add_title > .category_box > p {
+    margin: 20px 0px 20px 0px;
+}
+form > .contents_add_title > .category_box > .category_element {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    bottom: 0px;
-    border-top: black solid 1px;
-    padding: 0px 0px 0px 0px;
+    overflow-wrap: break-word;
+}
+form > .contents_add_title > .category_box > .category_element > input {
+    display: none;
+}
+form > .contents_add_title > .category_box > .category_element > label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: #888 solid 1px;
+    padding: 0px 20px 0px 20px;
+    margin-right: 10px;
+    white-space: nowrap;
+    cursor: pointer;
 }
 form > .contents_add_locate {
     display: flex;
@@ -106,4 +120,8 @@ form > .contents_add_locate > img {
 form > .contents_add_locate > input {
     width: 80px;
     font-size: 25px;
+}
+.selected {
+    background-color: #045d8b;
+    color: white;
 }

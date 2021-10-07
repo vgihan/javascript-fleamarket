@@ -34,6 +34,7 @@ async function get(req, res) {
 }
 async function post(req, res) {
     try {
+        console.log(req.body);
         const validCons = [
             "user_uid",
             "title",
@@ -41,6 +42,7 @@ async function post(req, res) {
             "contents",
             "locate",
             "category",
+            "img",
         ];
         const { user_uid, title, price, contents, category } = req.body;
         const validation = requestValidation(
@@ -57,7 +59,8 @@ async function post(req, res) {
             res
         );
         if (!validation) return;
-        res.json(await service.registItem(req.body));
+        await service.registItem(req.body);
+        res.status(200).redirect("/");
     } catch (err) {
         res.status(400).json({ message: "Bad request" });
     }

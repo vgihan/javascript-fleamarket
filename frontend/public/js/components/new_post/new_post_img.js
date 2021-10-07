@@ -7,7 +7,7 @@ export class NewPostImg extends Component {
                         <img src='assets/img/img_icon.png'/>
                         <p>${this.state.imgs.length}/10</p>
                     </label>
-                    <input type="file" name="img" id="img" multiple />
+                    <input type="file" name="img" id="img" enctype="multipart/form-data" multiple />
                 </div>
                 ${this.state.imgs.reduce((pre, src) => {
                     pre += `<div class="img_container">
@@ -33,7 +33,6 @@ export class NewPostImg extends Component {
             reader.addEventListener("load", upload);
             reader.readAsDataURL(changeEvent.target.files[0]);
         };
-
         $imgInput.addEventListener("change", pushImg);
     }
 }
