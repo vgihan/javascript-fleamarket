@@ -29,11 +29,18 @@
     border-bottom: #aaa solid 1px;
     height: 100px;
 }
-.header > a {
+.header > button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
     position: absolute;
     left: 80%;
 }
-.header > a:first-child {
+.header > button > img {
+    width: 30px;
+    height: 30px;
+}
+.header > a {
     position: absolute;
     left: 20%;
 }

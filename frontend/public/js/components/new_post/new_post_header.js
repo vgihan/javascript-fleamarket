@@ -8,10 +8,10 @@ export class NewPostHeader extends Component {
                     <img src="assets/img/left_empty_arrow.png" />
                 </a>
                 <p>글쓰기</p>
-                <a href="" class="submit_btn" >
+                <button type="submit" form="newpost" class="submit_btn" >
                     <img src="assets/img/${
                         isAllCheck ? "enable" : "disable"
                     }_check_icon.png"/>
-                </a>`;
+                </button>`;
     }
 }
