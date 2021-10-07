@@ -23,13 +23,13 @@ export class Component {
             this.mounted();
         });
     }
-    setState(newState) {
+    setState = (newState) => {
         Object.keys(newState).forEach((key) => {
             if (this.state[key] === undefined) return;
             this.state[key] = newState[key];
         });
         this.render();
-    }
+    };
     asyncUpdate() {}
     mounted() {}
     setEvent() {}

@@ -47,7 +47,13 @@ export class Detail extends Component {
             category,
             contents,
         });
-        new DetailFooter($footer, { like, price, seller });
+        new DetailFooter($footer, {
+            like,
+            price,
+            seller,
+            iid: this.props.item_id,
+            setParentState: this.setState,
+        });
     }
     initState() {
         return {

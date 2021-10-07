@@ -1,5 +1,6 @@
 import { Component } from "../../core/component";
 import { store } from "../../store/store";
+import { postWishlist, deleteWishlist } from "../../asyncs/wishlist";
 
 export class DetailFooter extends Component {
     template() {
@@ -20,15 +21,17 @@ export class DetailFooter extends Component {
             }</button>
         </div>`;
     }
-    initState() {
-        return {
-            imgs: [],
-            num: { chat: null, heart: null, view: null },
-            seller: null,
-            locate: null,
-            like: false,
-            price: null,
-        };
+    setEvent() {
+        const $likeBtn = this.$parent.querySelector(".like_box > img");
+
+        $likeBtn.addEventListener("click", async (e) => {
+            const { isLogined, user } = store.getState();
+            const { setParentState, iid, like } = this.props;
+            if (!isLogined) return;
+            const nextLike = Boolean(like ^ true);
+            setParentState({ like: nextLike });
+            if (nextLike) await postWishlist(user.userId, iid);
+            else await deleteWishlist(user.userId, iid);
+        });
     }
-    async asyncUpdate() {}
 }

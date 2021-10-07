@@ -2,6 +2,7 @@ import { Component } from "../../core/component";
 import { routing } from "../../router/router";
 import { store } from "../../store/store";
 import { makeQuery } from "../../utils/make_query";
+import { postWishlist, deleteWishlist } from "../../asyncs/wishlist";
 
 export class MainContents extends Component {
     template() {
@@ -61,30 +62,6 @@ export class MainContents extends Component {
             $wishIcon.src = toggles[isLike].src;
             $wishIcon.setAttribute("data-like", (parseInt(isLike) + 1) % 2);
             await toggles[isLike].request(userId, itemId);
-        };
-        const postWishlist = async (userId, itemId) => {
-            return await fetch("/wishlist", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    user_uid: userId,
-                    item_iid: itemId,
-                }),
-            });
-        };
-        const deleteWishlist = async (userId, itemId) => {
-            const query = makeQuery({
-                user_uid: userId,
-                item_iid: itemId,
-            });
-            return await fetch(`/wishlist?${query}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
         };
         $contents.addEventListener("click", (e) => {
             const $likeBtn = e.target.closest(".icon_info > img");
