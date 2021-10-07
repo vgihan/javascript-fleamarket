@@ -1,6 +1,5 @@
 const uuid = require("uuid");
 const db = require("../../models");
-const { sequelize } = require("../../models");
 
 module.exports = class ItemService {
     constructor(models) {
