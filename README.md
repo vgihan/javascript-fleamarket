@@ -2,25 +2,63 @@
 
 웹풀스택 프로젝트#3 - 중고거래
 
+## 📫 Demo
+
+[fleamarket](http://118.67.129.165/)
+
+## ⚙ 구현된 기능
+
+1. **페이지**
+
+    - 메인 페이지 - 사진을 제외한 나머지 물건 리스트를 필터링하여 보여준다.
+    - 카테고리 선택 페이지 - 카테고리 목록에서 물건을 필터링 할 카테고리를 고를 수 있다.
+    - 로그인 페이지 - github id를 이용하여 본 앱에 로그인 할 수 있다.
+    - 회원가입 페이지 - github id를 이용하여 본 앱에 회원가입 할 수 있다.
+    - 마이페이지 - 현재 로그인 한 유저의 id를 확인할 수 있고, 로그아웃 할 수 있다.
+    - 물건 상세 페이지 - 사진을 제외한 나머지 물건의 정보를 확인할 수 있고, 위시리스트 추가/삭제가 가능하며, 상세 페이지 조회 시 해당 물건의 조회수가 증가한다.
+    - 글쓰기 페이지 - 새로운 중고 물건을 등록할 수 있다.
+
+1. **메인 페이지 물건 보여주기 및 필터링**
+    - 메인 페이지가 로딩 될 때마다 중고 물건 정보를 fetch를 통해 받아와 페이지에 보여준다.
+    - 현재 로그인 하고 있는 사용자의 위치에 따라 중고 물건을 필터링 하여 페이지에 보여준다.
+    - 카테고리 페이지에서 원하는 카테고리 선정 시, 카테고리 별로 필터링 하여 페이지에 보여준다.
+1. **글쓰기**
+    - 글쓰기 페이지에서 중고 물건을 등록할 수 있는 기능이다.
+    - 제목, 카테고리, 설명, 가격을 모두 입력해야 제출 버튼이 활성화되어 등록할 수 있다.
+    - 사진은 선택 가능하지만, 등록할 수 없다. (컴포넌트 리렌더링 문제)
+    - 페이지가 로딩 될 때마다 카테고리 순서를 랜덤 순서로 추천해준다.
+1. **위시리스트 추가**
+    - 메인 페이지 및 물건 상세 페이지에서 하트 모양 버튼을 누르면 위시리스트에 추가할 수 있다.
+    - 현재 로그인 되어 있는 유저의 위시리스트에 저장되는 것이기 때문에, 로그인 하지 않은 상태라면 해당 버튼은 비활성화 된다.
+    - 하트가 비어있을 때 누르면 위시리스트에 추가되고, 꽉 차 있을 때 누르면 위시리스트에서 삭제된다.
+    - 위시리스트 추가와 동시에 해당 물건의 관심 개수를 증가 시킨다.
+1. **조회수 측정**
+    - 모든 유저가 해당 물건의 상세 페이지 접속 시 조회수를 증가시킨다.
+
+## 🎞 간단한 데모
+
+![fleamarket_simple_demo](https://user-images.githubusercontent.com/49841765/136493637-0dad85fe-ed4a-4646-8c00-29156eac8bd6.gif)
+
 ## ERD
 
-![fleamarket_ERD](https://user-images.githubusercontent.com/49841765/135079251-47d103c2-b077-40f1-8072-a6999629ad04.png)
+![image](https://user-images.githubusercontent.com/49841765/136490475-30a27599-03d6-4fb7-81a8-2600717f187b.png)
 
 ## API 명세
 
-| PATH      | METHOD | Description                                                                                              |
-| --------- | ------ | -------------------------------------------------------------------------------------------------------- |
-| /item     | GET    | query string으로 조건을 보내 조건에 알맞은 중고 물건을 얻는다. 이때, 물건에 해당하는 사진도 함께 얻는다. |
-| /item     | POST   | user_uid, title, price, contents, category 를 필수 요청 파라미터로 하여 중고 물건을 등록한다.            |
-| /item     | PUT    | user_uid, title, price, contents, category를 전체 수정                                                   |
-| /item     | DELETE | iid로 식별하여 삭제                                                                                      |
-| /chat     | GET    | ITEM_IID, SENDER, RECVER 3가지를 요청 파라미터로 하여 채팅 기록을 얻음                                   |
-| /chat     | POST   | 채팅 시 ITEM_IID, SENDER, RECVER, contents를 body로 전달하여 등록한다.                                   |
-| /user     | POST   | 회원가입 시 USERNAME을 등록한다.                                                                         |
-| /wishlist | GET    | user 정보를 이용하여 해당 유저의 위시리스트를 얻는다.                                                    |
-| /wishlist | POST   | 하트를 누르면 해당 유저의 위시리스트를 추가한다.                                                         |
-| /wishlist | DELETE | 하트를 다시 누르면 해당 위시리스트를 삭제한다.                                                           |
-
-## View Components
-
-![image](https://user-images.githubusercontent.com/49841765/135263185-c0482db7-3412-4a2b-8b3c-bbc6e4a7cd77.png)
+| PATH                  | METHOD | Description                                                                                                                                                                                       |
+| --------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| /item                 | GET    | query string으로 조건을 보내 조건에 알맞은 중고 물건을 얻는다. 또한, 로그인 하고 있는 유저의 위시리스트에 포함되는 내용인지 응답의 WID의 유무에 따라 파악할 수 있다.                              |
+| /item                 | POST   | user_uid, title, price, contents, category 를 필수 요청 파라미터로 하여 중고 물건을 등록한다.                                                                                                     |
+| /item                 | PUT    | req.body.mode에 따라 user_uid, title, price, contents, category 수정 및 관심, 조회, 채팅 수 증가/감소 기능을 수행한다.                                                                            |
+| /item                 | DELETE | iid로 식별하여 삭제                                                                                                                                                                               |
+| /chat                 | GET    | ITEM_IID, SENDER, RECVER 3가지를 요청 파라미터로 하여 채팅 기록을 얻음                                                                                                                            |
+| /chat                 | POST   | 채팅 시 ITEM_IID, SENDER, RECVER, contents를 body로 전달하여 등록한다.                                                                                                                            |
+| /user                 | POST   | 회원가입 시 USERNAME을 등록한다.                                                                                                                                                                  |
+| /wishlist             | GET    | user 정보를 이용하여 해당 유저의 위시리스트를 얻는다.                                                                                                                                             |
+| /wishlist             | POST   | 하트를 누르면 해당 유저의 위시리스트를 추가한다.                                                                                                                                                  |
+| /wishlist             | DELETE | 하트를 다시 누르면 해당 위시리스트를 삭제한다.                                                                                                                                                    |
+| /auth/github          | GET    | github에서 발급받은 clientID와 callback URI를 이용하여 github 소셜 로그인을 위한 resource 서버로 요청을 보낸다.                                                                                   |
+| /auth/github/callback | GET    | resource owner가 resource 서버로 요청을 보내어 로그인을 한 이후 resource 서버에게로 부터 queryString에 code를 포함하여 요청 받는다. 이후 resource 서버에게 액세스 토큰을 받기 위해 요청을 보낸다. |
+| /auth/github/login    | GET    | 세션을 이용하여 현재 로그인 상태와 유저 정보를 얻는다.                                                                                                                                            |
+| /auth/github/logout   | GET    | 세션을 삭제하여 로그아웃한다.                                                                                                                                                                     |
+| /auth/github/signup   | POST   | 유저의 github 정보를 토대로 위치 정보를 입력받아 회원 가입을 진행한다.                                                                                                                            |
