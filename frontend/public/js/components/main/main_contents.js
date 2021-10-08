@@ -21,7 +21,7 @@ export class MainContents extends Component {
                         <div class="word_info">
                             <p class="title">${content.TITLE}</p>
                             <p class="locate_time">${content.LOCATE} ∙ ${
-                    time >= 60 ? parseInt(time / 60) : time
+                    time >= 60 ? parseInt(time / 60) : parseInt(time)
                 } ${time >= 60 ? "시간 전" : "분 전"}</p>
                             <p class="price">${content.PRICE.toLocaleString()} 원</p>
                         </div>
